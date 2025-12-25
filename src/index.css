@@ -6,13 +6,13 @@
 
 @layer base {
   :root {
-    --background: 220 25% 10%;
+    --background: 220 15% 3%;
     --foreground: 210 40% 98%;
 
-    --card: 220 25% 12%;
+    --card: 220 15% 5%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 220 25% 14%;
+    --popover: 220 15% 6%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 190 100% 50%;
@@ -613,4 +613,55 @@ code,
 pre,
 .font-mono {
   font-family: 'JetBrains Mono', monospace;
+
+  /* Reveal Animations */
+  .reveal-hidden {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    filter: blur(8px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity, filter;
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  .reveal-slide-left {
+    transform: translateX(-40px);
+  }
+
+  .reveal-slide-right {
+    transform: translateX(40px);
+  }
+
+  .reveal-visible.reveal-slide-left,
+  .reveal-visible.reveal-slide-right {
+    transform: translateX(0);
+  }
+
+  /* Navbar Wavy Transition */
+  .navbar-wave {
+    position: absolute;
+    bottom: -31px;
+    left: 0;
+    width: 100%;
+    height: 32px;
+    fill: black;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    z-index: 10;
+  }
+
+  .wave-accent {
+    fill: none;
+    stroke: hsl(var(--primary) / 0.2);
+    stroke-width: 0.5;
+  }
+
+  .nav-plane-shadow {
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(var(--primary), 0.05);
+  }
 }

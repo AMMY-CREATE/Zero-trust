@@ -15,7 +15,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b-2 border-primary/20 scanlines">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md nav-plane-shadow scanlines">
       {/* Decorative Top Bar */}
       <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
@@ -26,13 +26,13 @@ export function Navbar() {
           <Link to="/" className="flex items-center gap-3 group relative perspective-1000">
             <div className="relative preserve-3d group-hover:rotate-y-12 transition-transform duration-500">
               <div className="p-2 border border-primary/30 bg-primary/5 relative overflow-hidden">
-                <Shield className="h-6 w-6 text-primary glitch" />
+                <Shield className="h-6 w-6 text-primary" />
                 <div className="absolute inset-0 bg-primary/10 animate-pulse" />
               </div>
               <div className="absolute -top-1 -right-1 w-2 h-2 bg-primary glow-primary" />
             </div>
             <div className="flex flex-col">
-              <span className="font-black text-xl tracking-tighter uppercase leading-none text-white glitch" data-text="AMMY">
+              <span className="font-black text-xl tracking-tighter uppercase leading-none text-white">
                 AMMY
               </span>
               <span className="text-[10px] font-mono text-primary/60 tracking-[0.3em] uppercase leading-none mt-1">
@@ -41,7 +41,7 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation - Tactical Style */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-2">
             {navItems.map((item) => {
               const isActive = location.pathname === item.path;
@@ -55,12 +55,8 @@ export function Navbar() {
                   <span className="relative z-10 text-xs font-mono font-bold tracking-widest uppercase">
                     {item.label}
                   </span>
-
-                  {/* Hover/Active Tactical Background */}
                   <div className={`absolute inset-0 border-l border-r border-primary/0 group-hover:border-primary/30 group-hover:bg-primary/5 transition-all duration-300 ${isActive ? "border-primary/50 bg-primary/10" : ""
                     }`} />
-
-                  {/* Indicator Line */}
                   <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-primary transition-all duration-500 ${isActive ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-1/2 group-hover:opacity-50"
                     }`} />
                 </Link>
@@ -91,7 +87,7 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Menu Button - Redesigned */}
+          {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
@@ -112,8 +108,8 @@ export function Navbar() {
                   to={item.path}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center justify-between p-4 border border-primary/10 transition-all ${location.pathname === item.path
-                      ? "bg-primary/10 border-primary/40 text-primary"
-                      : "text-primary/60 hover:bg-white/5 hover:text-white"
+                    ? "bg-primary/10 border-primary/40 text-primary"
+                    : "text-primary/60 hover:bg-white/5 hover:text-white"
                     }`}
                 >
                   <span className="text-sm font-mono font-bold tracking-widest uppercase">{item.label}</span>
@@ -133,13 +129,16 @@ export function Navbar() {
                 </Link>
               </div>
             </div>
-            {/* Background Aesthetic for Mobile Menu */}
             <div className="absolute inset-0 bg-cyber-grid bg-grid opacity-10 pointer-events-none -z-10" />
           </div>
         )}
       </div>
-      {/* Decorative Bottom Line */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-primary/10" />
+
+      {/* Wavy Divider Transition */}
+      <svg className="navbar-wave" viewBox="0 0 1440 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0h1440v20c-150 15-350-15-720 0s-570 15-720 0V0z" />
+        <path className="wave-accent" d="M0 15c150 15 350-15 720 0s570 15 720 0" strokeDasharray="5,10" />
+      </svg>
     </nav>
   );
 }

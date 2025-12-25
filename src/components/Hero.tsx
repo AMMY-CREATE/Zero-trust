@@ -97,7 +97,7 @@ export const Hero = () => {
                         </div>
                     </div>
 
-                    <p className="max-w-xl mx-auto text-muted-foreground text-sm uppercase tracking-widest leading-relaxed font-mono opacity-80 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                    <p className="max-w-xl mx-auto text-muted-foreground text-base uppercase tracking-widest leading-relaxed font-mono opacity-80 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                         Securing the digital frontier. Behavioral intelligence meets next-gen encryption.
                         <br />
                         <span className="text-primary font-bold animate-pulse">STATUS: ADVERSARY DETECTED</span>
