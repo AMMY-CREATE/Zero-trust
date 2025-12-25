@@ -17,7 +17,7 @@ export const Hero = () => {
     }, []);
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black scanlines perspective-1000">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black scanlines perspective-1000 pt-20">
             {/* Background Image with 3D Parallax */}
             <div
                 className="absolute inset-0 z-0 transition-transform duration-300 ease-out preserve-3d"

@@ -3,6 +3,7 @@ import { Activity, Brain, Bell, Eye, ArrowRight, ShieldAlert } from "lucide-reac
 import { Button } from "@/components/ui/button";
 import { PublicLayout } from "@/components/layout/PublicLayout";
 import { Hero } from "@/components/Hero";
+import { SmokeOverlay } from "@/components/effects/SmokeOverlay";
 
 const features = [
   { icon: ShieldAlert, title: "Continuous Verification", description: "Never trust, always verify every access request" },
@@ -21,6 +22,7 @@ const stats = [
 export default function LandingPage() {
   return (
     <PublicLayout>
+      <SmokeOverlay />
       <Hero />
 
 
