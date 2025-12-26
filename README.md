@@ -32,7 +32,7 @@ npm run build
 ## Technologies Used
 
 - Vite
-- TypeScript
+- JavaScript
 - React
 - shadcn-ui
 - Tailwind CSS
