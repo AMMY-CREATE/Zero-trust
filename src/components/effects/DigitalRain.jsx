@@ -16,7 +16,7 @@ export const DigitalRain = () => {
         const chars = "0123456789ABCDEF01";
         const charSet = chars.split("");
 
-        const fontSize = 14;
+        const fontSize = 35;
         const columns = Math.ceil(width / fontSize);
 
         const drops = [];
