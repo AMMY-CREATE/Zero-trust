@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Shield, Menu, X, Terminal, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import "./Navbar.css";
 
 const navItems = [
     { label: "Home", path: "/" },
@@ -15,73 +16,66 @@ export function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md nav-plane-shadow scanlines">
+        <nav className="navbar">
 
-            <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+            <div className="navbar-divider" />
 
-            <div className="container mx-auto px-4">
-                <div className="flex items-center justify-between h-20">
+            <div className="navbar-container">
+                <div className="navbar-inner">
 
 
-                    <Link to="/" className="flex items-center gap-3 group relative perspective-1000">
-                        <div className="relative preserve-3d group-hover:rotate-y-12 transition-transform duration-500">
-                            <div className="p-2 border border-primary/30 bg-primary/5 relative overflow-hidden">
-                                <Shield className="h-6 w-6 text-primary" />
-                                <div className="absolute inset-0 bg-primary/10 animate-pulse" />
+                    <Link to="/" className="navbar-logo">
+                        <div className="navbar-logo-icon-wrapper">
+                            <div className="navbar-logo-icon-border">
+                                <Shield className="navbar-logo-icon" />
+                                <div className="navbar-logo-icon-pulse" />
                             </div>
-                            <div className="absolute -top-1 -right-1 w-2 h-2 bg-primary glow-primary" />
+                            <div className="navbar-logo-dot" />
                         </div>
-                        <div className="flex flex-col">
-                            <span className="font-black text-xl tracking-tighter uppercase leading-none text-white">
-                                AMMY
-                            </span>
-                            <span className="text-[10px] font-mono text-primary/60 tracking-[0.3em] uppercase leading-none mt-1">
-                                PROJECT_v2
-                            </span>
+                        <div className="navbar-logo-text">
+                            <span className="navbar-logo-main">AMMY</span>
+                            <span className="navbar-logo-sub">PROJECT_v2</span>
                         </div>
                     </Link>
 
 
-                    <div className="hidden md:flex items-center gap-2">
+                    <div className="navbar-menu">
                         {navItems.map((item) => {
                             const isActive = location.pathname === item.path;
                             return (
                                 <Link
                                     key={item.path}
                                     to={item.path}
-                                    className={`relative px-6 py-2 group transition-all duration-300 ${isActive ? "text-primary" : "text-primary/40 hover:text-white"
-                                        }`}
+                                    className={`navbar-nav-item ${isActive ? 'active' : ''}`}
                                 >
-                                    <span className="relative z-10 text-xs font-mono font-bold tracking-widest uppercase">
+                                    <span className="navbar-nav-text">
                                         {item.label}
                                     </span>
-                                    <div className={`absolute inset-0 border-l border-r border-primary/0 group-hover:border-primary/30 group-hover:bg-primary/5 transition-all duration-300 ${isActive ? "border-primary/50 bg-primary/10" : ""
-                                        }`} />
-                                    <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-primary transition-all duration-500 ${isActive ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-1/2 group-hover:opacity-50"
-                                        }`} />
+                                    <div className="navbar-nav-underlay" />
+                                    <div className="navbar-nav-underline" />
                                 </Link>
                             );
                         })}
                     </div>
 
 
-                    <div className="hidden md:flex items-center gap-6">
-                        <div className="flex flex-col items-end px-4 border-r border-primary/20">
-                            <span className="text-[8px] font-mono text-primary/40 uppercase tracking-widest">System_Auth</span>
-                            <span className="text-[10px] font-mono text-success uppercase font-bold animate-pulse">Root_Access</span>
+                    <div className="navbar-auth">
+                        <div className="navbar-auth-status">
+                            <span className="navbar-auth-label">System_Auth</span>
+                            <span className="navbar-auth-status-text">Root_Access</span>
                         </div>
 
-                        <div className="flex items-center gap-4">
+                        <div className="navbar-buttons">
                             <Link to="/login">
-                                <Button variant="ghost" size="sm" className="rounded-none font-mono text-[10px] uppercase tracking-widest hover:bg-primary/10 hover:text-white border border-transparent hover:border-primary/20">
-                                    <Terminal className="h-3 w-3 mr-2" />
+                                <Button variant="ghost" size="sm" className="navbar-btn-signin">
+                                    <Terminal style={{ height: '0.75rem', width: '0.75rem', marginRight: '0.5rem' }} />
                                     Sign_In
                                 </Button>
                             </Link>
                             <Link to="/login">
-                                <Button size="sm" className="rounded-none bg-primary text-black hover:bg-white transition-all h-10 px-6 font-black uppercase tracking-tighter glow-primary group">
+                                <Button size="sm" className="navbar-btn-deploy">
                                     Deploy
-                                    <Lock className="h-3 w-3 ml-2 group-hover:rotate-12 transition-transform" />
+                                    <Lock className="navbar-btn-deploy-icon" />
                                 </Button>
                             </Link>
                         </div>
@@ -91,45 +85,46 @@ export function Navbar() {
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="md:hidden border border-primary/20 rounded-none bg-primary/5 hover:bg-primary/20"
+                        className="navbar-mobile-toggle"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
-                        {mobileMenuOpen ? <X className="h-5 w-5 text-primary" /> : <Menu className="h-5 w-5 text-primary" />}
+                        {mobileMenuOpen ? (
+                            <X className="navbar-mobile-toggle-icon" />
+                        ) : (
+                            <Menu className="navbar-mobile-toggle-icon" />
+                        )}
                     </Button>
                 </div>
 
 
                 {mobileMenuOpen && (
-                    <div className="md:hidden py-6 border-t border-primary/20 animate-fade-in bg-black/95 absolute left-0 right-0 top-20 h-screen">
-                        <div className="container mx-auto px-4 flex flex-col gap-4">
+                    <div className={`navbar-mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+                        <div className="navbar-mobile-items">
                             {navItems.map((item) => (
                                 <Link
                                     key={item.path}
                                     to={item.path}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className={`flex items-center justify-between p-4 border border-primary/10 transition-all ${location.pathname === item.path
-                                        ? "bg-primary/10 border-primary/40 text-primary"
-                                        : "text-primary/60 hover:bg-white/5 hover:text-white"
-                                        }`}
+                                    className={`navbar-mobile-item ${location.pathname === item.path ? 'active' : ''}`}
                                 >
-                                    <span className="text-sm font-mono font-bold tracking-widest uppercase">{item.label}</span>
-                                    <Terminal className="h-4 w-4 opacity-40" />
+                                    <span className="navbar-mobile-item-text">{item.label}</span>
+                                    <Terminal className="navbar-mobile-item-icon" />
                                 </Link>
                             ))}
-                            <div className="flex flex-col gap-4 mt-8 pt-8 border-t border-primary/10">
+                            <div className="navbar-mobile-buttons">
                                 <Link to="/login" className="w-full" onClick={() => setMobileMenuOpen(false)}>
-                                    <Button variant="outline" className="w-full rounded-none border-primary/20 font-mono uppercase tracking-widest h-12">
+                                    <Button variant="outline" className="navbar-mobile-btn navbar-mobile-btn-signin">
                                         System_Sign_In
                                     </Button>
                                 </Link>
                                 <Link to="/login" className="w-full" onClick={() => setMobileMenuOpen(false)}>
-                                    <Button className="w-full rounded-none bg-primary text-black font-black uppercase tracking-tighter h-12 glow-primary">
+                                    <Button className="navbar-mobile-btn navbar-mobile-btn-deploy">
                                         Initiate_Deployment
                                     </Button>
                                 </Link>
                             </div>
                         </div>
-                        <div className="absolute inset-0 bg-cyber-grid bg-grid opacity-10 pointer-events-none -z-10" />
+                        <div className="navbar-mobile-menu-grid" />
                     </div>
                 )}
             </div>

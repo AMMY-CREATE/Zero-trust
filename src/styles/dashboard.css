@@ -1,0 +1,234 @@
+/* Dashboard Shared Styles */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.dashboard-grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid-cols-3,
+  .dashboard-grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-grid-cols-3,
+  .dashboard-grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-card {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 0.75rem;
+  border: 1px solid rgb(39 39 42);
+  padding: 1.5rem;
+  transition: all 300ms ease;
+}
+
+.dashboard-card:hover {
+  border-color: rgb(34 197 94);
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.dashboard-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dashboard-card-subtitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.dashboard-space-y-3 > * + * {
+  margin-top: 0.75rem;
+}
+
+.dashboard-space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
+
+.dashboard-activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: rgba(39, 39, 42, 0.3);
+  border-radius: 0.5rem;
+  transition: all 300ms ease;
+}
+
+.dashboard-activity-item:hover {
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.dashboard-activity-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.dashboard-activity-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.dashboard-activity-content {
+  flex: 1;
+}
+
+.dashboard-activity-device {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+}
+
+.dashboard-activity-location {
+  font-size: 0.75rem;
+  color: rgb(161 161 170);
+}
+
+.dashboard-activity-time {
+  font-size: 0.75rem;
+  color: rgb(161 161 170);
+}
+
+.dashboard-progress-bar {
+  width: 100%;
+  height: 0.5rem;
+  background: rgb(39 39 42);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.dashboard-progress-fill {
+  height: 100%;
+  background: rgb(34 197 94);
+  border-radius: 9999px;
+  transition: width 300ms ease;
+}
+
+.dashboard-stat-label {
+  font-size: 0.875rem;
+  color: rgb(161 161 170);
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-stat-value {
+  font-size: 2rem;
+  font-weight: 900;
+  color: rgb(34 197 94);
+}
+
+.dashboard-table-container {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.dashboard-table-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgb(39 39 42);
+  margin-bottom: 1rem;
+}
+
+.dashboard-anomaly-card {
+  padding: 1rem;
+  background: rgba(39, 39, 42, 0.3);
+  border-radius: 0.5rem;
+  border: 1px solid rgb(39 39 42);
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.dashboard-anomaly-card:hover,
+.dashboard-anomaly-card.selected {
+  border-color: rgb(34 197 94);
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.dashboard-anomaly-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-anomaly-type {
+  font-weight: 600;
+  color: white;
+}
+
+.dashboard-anomaly-severity {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.dashboard-anomaly-description {
+  font-size: 0.875rem;
+  color: rgb(161 161 170);
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-anomaly-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: rgb(161 161 170);
+}
+
+.dashboard-feature-weight {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.dashboard-feature-name {
+  font-size: 0.875rem;
+  color: rgb(161 161 170);
+  text-transform: capitalize;
+}
+
+.dashboard-feature-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+}
+
+.dashboard-max-h-300 {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.dashboard-max-h-500 {
+  max-height: 500px;
+  overflow-y: auto;
+}

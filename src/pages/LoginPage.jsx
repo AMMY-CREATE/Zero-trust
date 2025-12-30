@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import "./LoginPage.css";
 
 export default function LoginPage() {
     const navigate = useNavigate();
@@ -21,71 +22,71 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden">
-            <div className="absolute inset-0 bg-cyber-grid bg-grid opacity-20" />
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[128px]" />
+        <div className="login-wrapper">
+            <div className="login-grid-overlay" />
+            <div className="login-glow-element" />
 
-            <div className="w-full max-w-md p-8 relative z-10">
-                <div className="text-center mb-8">
-                    <div className="flex justify-center mb-4">
-                        <div className="relative">
-                            <Shield className="h-16 w-16 text-primary" />
-                            <div className="absolute inset-0 bg-primary/30 blur-2xl" />
+            <div className="login-container">
+                <div className="login-header">
+                    <div className="login-logo-wrapper">
+                        <div className="login-logo">
+                            <Shield className="login-logo-icon" />
+                            <div className="login-logo-glow" />
                         </div>
                     </div>
-                    <h1 className="text-2xl font-bold">
-                        <span className="text-primary">ZT</span>ADS
+                    <h1 className="login-title">
+                        <span className="login-title-primary">ZT</span>ADS
                     </h1>
-                    <p className="text-muted-foreground mt-2">Sign in to access the security dashboard</p>
+                    <p className="login-subtitle">Sign in to access the security dashboard</p>
                 </div>
 
-                <div className="bg-card rounded-xl border border-border p-6">
+                <div className="login-card">
                     <Tabs defaultValue="admin" className="w-full">
-                        <TabsList className="grid w-full grid-cols-2 mb-6">
-                            <TabsTrigger value="admin">Admin</TabsTrigger>
-                            <TabsTrigger value="user">User</TabsTrigger>
+                        <TabsList className="login-tabs mb-6">
+                            <TabsTrigger value="admin" className="login-tab">Admin</TabsTrigger>
+                            <TabsTrigger value="user" className="login-tab">User</TabsTrigger>
                         </TabsList>
 
-                        <TabsContent value="admin">
-                            <form onSubmit={handleAdminLogin} className="space-y-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="admin-email">Email</Label>
-                                    <Input id="admin-email" type="email" placeholder="admin@ztads.com" defaultValue="admin@ztads.com" />
+                        <TabsContent value="admin" className="login-tab-content">
+                            <form onSubmit={handleAdminLogin} className="login-form">
+                                <div className="login-form-group">
+                                    <Label htmlFor="admin-email" className="login-form-label">Email</Label>
+                                    <Input id="admin-email" type="email" placeholder="admin@ztads.com" defaultValue="admin@ztads.com" className="login-form-input" />
                                 </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="admin-password">Password</Label>
-                                    <div className="relative">
-                                        <Input id="admin-password" type={showPassword ? "text" : "password"} placeholder="••••••••" defaultValue="admin123" />
-                                        <Button type="button" variant="ghost" size="icon" className="absolute right-0 top-0 h-full" onClick={() => setShowPassword(!showPassword)}>
+                                <div className="login-form-group">
+                                    <Label htmlFor="admin-password" className="login-form-label">Password</Label>
+                                    <div className="login-password-wrapper">
+                                        <Input id="admin-password" type={showPassword ? "text" : "password"} placeholder="••••••••" defaultValue="admin123" className="login-form-input" style={{ paddingRight: '2.5rem' }} />
+                                        <Button type="button" variant="ghost" size="icon" className="login-password-toggle" onClick={() => setShowPassword(!showPassword)}>
                                             {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                                         </Button>
                                     </div>
                                 </div>
-                                <Button type="submit" className="w-full glow-primary">Sign In as Admin</Button>
+                                <Button type="submit" className="login-button primary">Sign In as Admin</Button>
                             </form>
                         </TabsContent>
 
-                        <TabsContent value="user">
-                            <form onSubmit={handleUserLogin} className="space-y-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="user-email">Email</Label>
-                                    <Input id="user-email" type="email" placeholder="user@ztads.com" defaultValue="user@ztads.com" />
+                        <TabsContent value="user" className="login-tab-content">
+                            <form onSubmit={handleUserLogin} className="login-form">
+                                <div className="login-form-group">
+                                    <Label htmlFor="user-email" className="login-form-label">Email</Label>
+                                    <Input id="user-email" type="email" placeholder="user@ztads.com" defaultValue="user@ztads.com" className="login-form-input" />
                                 </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="user-password">Password</Label>
-                                    <div className="relative">
-                                        <Input id="user-password" type={showPassword ? "text" : "password"} placeholder="••••••••" defaultValue="user123" />
-                                        <Button type="button" variant="ghost" size="icon" className="absolute right-0 top-0 h-full" onClick={() => setShowPassword(!showPassword)}>
+                                <div className="login-form-group">
+                                    <Label htmlFor="user-password" className="login-form-label">Password</Label>
+                                    <div className="login-password-wrapper">
+                                        <Input id="user-password" type={showPassword ? "text" : "password"} placeholder="••••••••" defaultValue="user123" className="login-form-input" style={{ paddingRight: '2.5rem' }} />
+                                        <Button type="button" variant="ghost" size="icon" className="login-password-toggle" onClick={() => setShowPassword(!showPassword)}>
                                             {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                                         </Button>
                                     </div>
                                 </div>
-                                <Button type="submit" className="w-full">Sign In as User</Button>
+                                <Button type="submit" className="login-button">Sign In as User</Button>
                             </form>
                         </TabsContent>
                     </Tabs>
 
-                    <p className="text-xs text-center text-muted-foreground mt-6">
+                    <p className="login-footer">
                         Demo mode: Click sign in to access the dashboard
                     </p>
                 </div>

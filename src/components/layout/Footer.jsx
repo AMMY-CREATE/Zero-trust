@@ -1,76 +1,79 @@
 import { Link } from "react-router-dom";
 import { Shield, Github, Linkedin, Mail } from "lucide-react";
+import "./Footer.css";
 
 export function Footer() {
     return (
-        <footer className="border-t border-border bg-card/50">
-            <div className="container mx-auto px-4 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <footer className="footer">
+            <div className="footer-container">
+                <div className="footer-grid">
 
-                    <div className="space-y-4">
-                        <Link to="/" className="flex items-center gap-2">
-                            <Shield className="h-8 w-8 text-primary" />
-                            <span className="font-bold text-xl">
-                                <span className="text-primary">ZT</span>ADS
+                    <div className="footer-section">
+                        <Link to="/" className="footer-logo-link">
+                            <Shield className="footer-logo-icon" />
+                            <span className="footer-logo-text">
+                                <span className="footer-logo-text-primary">ZT</span>ADS
                             </span>
                         </Link>
-                        <p className="text-muted-foreground text-sm">
+                        <p className="footer-description">
                             Zero-Trust Anomaly Detection System. Never Trust, Always Verify.
                         </p>
-                        <div className="flex gap-4">
-                            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                                <Github className="h-5 w-5" />
+                        <div className="footer-social-links">
+                            <a href="#" className="footer-social-link">
+                                <Github className="footer-social-icon" />
                             </a>
-                            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                                <Linkedin className="h-5 w-5" />
+                            <a href="#" className="footer-social-link">
+                                <Linkedin className="footer-social-icon" />
                             </a>
-                            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                                <Mail className="h-5 w-5" />
+                            <a href="#" className="footer-social-link">
+                                <Mail className="footer-social-icon" />
                             </a>
                         </div>
                     </div>
 
 
-                    <div>
-                        <h3 className="font-semibold mb-4">Platform</h3>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><Link to="/features" className="hover:text-primary transition-colors">Features</Link></li>
-                            <li><Link to="/architecture" className="hover:text-primary transition-colors">Architecture</Link></li>
-                            <li><Link to="/about" className="hover:text-primary transition-colors">About</Link></li>
-                            <li><Link to="/login" className="hover:text-primary transition-colors">Dashboard</Link></li>
+                    <div className="footer-column">
+                        <h3 className="footer-column-title">Platform</h3>
+                        <ul className="footer-column-list">
+                            <li className="footer-column-item"><Link to="/features" className="footer-column-link">Features</Link></li>
+                            <li className="footer-column-item"><Link to="/architecture" className="footer-column-link">Architecture</Link></li>
+                            <li className="footer-column-item"><Link to="/about" className="footer-column-link">About</Link></li>
+                            <li className="footer-column-item"><Link to="/login" className="footer-column-link">Dashboard</Link></li>
                         </ul>
                     </div>
 
 
-                    <div>
-                        <h3 className="font-semibold mb-4">Security</h3>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><a href="#" className="hover:text-primary transition-colors">Zero-Trust Model</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">ML Detection</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Risk Scoring</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">Compliance</a></li>
+                    <div className="footer-column">
+                        <h3 className="footer-column-title">Security</h3>
+                        <ul className="footer-column-list">
+                            <li className="footer-column-item"><a href="#" className="footer-column-link">Zero-Trust Model</a></li>
+                            <li className="footer-column-item"><a href="#" className="footer-column-link">ML Detection</a></li>
+                            <li className="footer-column-item"><a href="#" className="footer-column-link">Risk Scoring</a></li>
+                            <li className="footer-column-item"><a href="#" className="footer-column-link">Compliance</a></li>
                         </ul>
                     </div>
 
 
-                    <div>
-                        <h3 className="font-semibold mb-4">Academic</h3>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><span>CSE Data Science Project</span></li>
-                            <li><span>Cybersecurity Research</span></li>
-                            <li><span>Machine Learning</span></li>
-                            <li><span>Documentation</span></li>
+                    <div className="footer-column">
+                        <h3 className="footer-column-title">Academic</h3>
+                        <ul className="footer-column-list">
+                            <li className="footer-column-item"><span>CSE Data Science Project</span></li>
+                            <li className="footer-column-item"><span>Cybersecurity Research</span></li>
+                            <li className="footer-column-item"><span>Machine Learning</span></li>
+                            <li className="footer-column-item"><span>Documentation</span></li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-sm text-muted-foreground">
-                        © {new Date().getFullYear()} ZTADS. Academic Project - CSE Data Science.
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                        Built with React, JavaScript & Machine Learning
-                    </p>
+                <div className="footer-bottom">
+                    <div className="footer-bottom-left">
+                        <p className="footer-bottom-text">
+                            © {new Date().getFullYear()} ZTADS. Academic Project - CSE Data Science.
+                        </p>
+                        <p className="footer-bottom-text">
+                            Built with React, JavaScript & Machine Learning
+                        </p>
+                    </div>
                 </div>
             </div>
         </footer>
