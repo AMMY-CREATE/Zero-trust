@@ -6,15 +6,27 @@ import "./Hero.css";
 
 export const Hero = () => {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const [isMoving, setIsMoving] = useState(false);
 
     useEffect(() => {
         const handleMouseMove = (e) => {
+            setIsMoving(true);
             const x = (e.clientX / window.innerWidth - 0.5) * 20;
             const y = (e.clientY / window.innerHeight - 0.5) * -20;
             setMousePos({ x, y });
         };
+
+        const handleMouseLeave = () => {
+            setIsMoving(false);
+            setMousePos({ x: 0, y: 0 });
+        };
+
         window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseleave", handleMouseLeave);
+        return () => {
+            window.removeEventListener("mousemove", handleMouseMove);
+            document.removeEventListener("mouseleave", handleMouseLeave);
+        };
     }, []);
 
     return (
@@ -23,7 +35,8 @@ export const Hero = () => {
             <div
                 className="hero-background"
                 style={{
-                    transform: `rotateY(${mousePos.x * 0.2}deg) rotateX(${mousePos.y * 0.2}deg) scale(1.1)`
+                    transform: `translate3d(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px, 0) rotateY(${mousePos.x * 0.15}deg) rotateX(${mousePos.y * 0.15}deg) scale(1.15)`,
+                    transition: isMoving ? 'none' : 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
             >
                 <img
@@ -58,7 +71,8 @@ export const Hero = () => {
             <div
                 className="hero-container"
                 style={{
-                    transform: `rotateY(${mousePos.x}deg) rotateX(${mousePos.y}deg)`
+                    transform: `rotateY(${mousePos.x * 0.5}deg) rotateX(${mousePos.y * 0.5}deg)`,
+                    transition: isMoving ? 'none' : 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
             >
 

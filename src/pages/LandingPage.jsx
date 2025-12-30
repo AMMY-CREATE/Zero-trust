@@ -6,6 +6,7 @@ import { Hero } from "@/components/Hero";
 import { SmokeOverlay } from "@/components/effects/SmokeOverlay";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { DigitalRain } from "@/components/effects/DigitalRain";
+import { useState, useEffect } from "react";
 import "./LandingPage.css";
 
 const features = [
@@ -23,11 +24,17 @@ const stats = [
 ];
 
 export default function LandingPage() {
+    const [showHero, setShowHero] = useState(true);
+
+    useEffect(() => {
+        // Always show hero on landing page
+        setShowHero(true);
+    }, []);
     return (
         <PublicLayout>
             <SmokeOverlay />
 
-            <Hero />
+            {showHero && <Hero />}
             <div className="main-wrapper">
                 <DigitalRain />
                 <div className="cyber-grid-overlay" />

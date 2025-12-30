@@ -6,9 +6,9 @@ import "./Navbar.css";
 
 const navItems = [
     { label: "Home", path: "/" },
-    { label: "About", path: "/#about" },
-    { label: "Features", path: "/#features" },
-    { label: "Architecture", path: "/#architecture" },
+    { label: "About", path: "/about" },
+    { label: "Features", path: "/features" },
+    { label: "Architecture", path: "/architecture" },
 ];
 
 export function Navbar() {

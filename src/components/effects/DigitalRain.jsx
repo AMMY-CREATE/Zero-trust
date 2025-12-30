@@ -43,15 +43,15 @@ export const DigitalRain = () => {
             if (elapsed > fpsInterval) {
                 lastDrawTime = now - (elapsed % fpsInterval);
 
-                ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+                ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
                 ctx.fillRect(0, 0, width, height);
 
                 ctx.font = `${fontSize}px JetBrains Mono, monospace`;
 
                 for (let i = 0; i < drops.length; i++) {
                     const text = charSet[Math.floor(Math.random() * charSet.length)];
-                    const opacity = Math.random() > 0.9 ? 1.0 : 0.6;
-                    ctx.fillStyle = `rgba(0, 255, 249, ${opacity})`;
+                    const opacity = Math.random() > 0.7 ? 0.4 : 0.2;
+                    ctx.fillStyle = `rgba(0, 255, 1, ${opacity})`;
 
                     const scrollOffset = scrollY * 0.15;
                     const yPos = (drops[i] * fontSize + scrollOffset) % (height || 1);
@@ -62,7 +62,7 @@ export const DigitalRain = () => {
                         drops[i] = -fontSize;
                     }
 
-                    drops[i] += 0.4;
+                    drops[i] += 0.5;
                 }
             }
         };
@@ -92,7 +92,7 @@ export const DigitalRain = () => {
     return (
         <canvas
             ref={canvasRef}
-            className="absolute inset-0 pointer-events-none opacity-[0.05]"
+            className="absolute inset-0 pointer-events-none opacity-50"
             style={{ zIndex: 0 }}
         />
     );
