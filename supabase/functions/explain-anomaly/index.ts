@@ -12,10 +12,10 @@ serve(async (req) => {
 
   try {
     const { anomaly } = await req.json();
-    const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
-    
-    if (!LOVABLE_API_KEY) {
-      throw new Error('LOVABLE_API_KEY is not configured');
+    const ZTADS_AI_API_KEY = Deno.env.get('ZTADS_AI_API_KEY');
+
+    if (!ZTADS_AI_API_KEY) {
+      throw new Error('ZTADS_AI_API_KEY is not configured');
     }
 
     console.log('Generating explanation for anomaly:', anomaly.type);
@@ -41,10 +41,10 @@ ${Object.entries(anomaly.features || {}).map(([k, v]) => `- ${k}: ${((v as numbe
 
 Explain why this activity was detected as anomalous by the Isolation Forest ML model and what actions should be taken.`;
 
-    const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+    const response = await fetch('https://ai.gateway.ztads.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
+        'Authorization': `Bearer ${ZTADS_AI_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
