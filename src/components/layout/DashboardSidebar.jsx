@@ -10,25 +10,32 @@ import {
     LogOut,
     ChevronLeft,
     ChevronRight,
+    FileText,
+    Lock,
+    Target,
+    AlertCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
 const adminNavItems = [
-    { label: "Overview", path: "/admin", icon: LayoutDashboard },
-    { label: "User Activity", path: "/admin/activity", icon: Users },
+    { label: "Dashboard", path: "/admin", icon: LayoutDashboard },
+    { label: "User Management", path: "/admin/users", icon: Users },
     { label: "Anomaly Detection", path: "/admin/anomalies", icon: AlertTriangle },
-    { label: "Risk Management", path: "/admin/risk", icon: Activity },
-    { label: "Alerts", path: "/admin/alerts", icon: Bell },
+    { label: "Threat Intelligence", path: "/admin/threats", icon: Target },
+    { label: "Incident Response", path: "/admin/incidents", icon: AlertCircle },
+    { label: "Security Policies", path: "/admin/policies", icon: Lock },
+    { label: "Audit Logs", path: "/admin/audit-logs", icon: FileText },
     { label: "Settings", path: "/admin/settings", icon: Settings },
 ];
 
 const userNavItems = [
-    { label: "Overview", path: "/dashboard", icon: LayoutDashboard },
+    { label: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
     { label: "Login History", path: "/dashboard/history", icon: Activity },
-    { label: "Devices", path: "/dashboard/devices", icon: Users },
+    { label: "My Devices", path: "/dashboard/devices", icon: Users },
     { label: "Notifications", path: "/dashboard/notifications", icon: Bell },
+    { label: "Profile Settings", path: "/dashboard/profile", icon: Settings },
 ];
 
 export function DashboardSidebar({ userRole }) {

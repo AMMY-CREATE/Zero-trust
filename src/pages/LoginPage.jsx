@@ -4,6 +4,7 @@ import { Shield, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Checkbox from "@/components/Checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import "./LoginPage.css";
 
@@ -61,6 +62,20 @@ export default function LoginPage() {
                                             {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                                         </Button>
                                     </div>
+                                    <div className="flex items-center space-x-2 mt-4">
+                                        <Checkbox
+                                            id="admin-remember"
+                                            scale={0.3}
+                                            showExtras={false}
+                                            onChange={(checked) => console.log("Remember admin:", checked)}
+                                        />
+                                        <label
+                                            htmlFor="admin-remember"
+                                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-primary font-mono"
+                                        >
+                                            Remember me
+                                        </label>
+                                    </div>
                                 </div>
                                 <Button type="submit" className="login-button primary">Sign In as Admin</Button>
                             </form>
@@ -91,6 +106,6 @@ export default function LoginPage() {
                     </p>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

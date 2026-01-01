@@ -1,9 +1,11 @@
 /* Features Page Styles */
 
 .features-main {
-    background: black;
+    background: #000000;
+    background-image: none !important;
     position: relative;
     overflow: hidden;
+    min-height: 100vh;
 }
 
 .features-container {
@@ -17,7 +19,10 @@
     padding: 8rem 0 4rem;
     border-bottom: 1px solid rgb(34 197 94 / 0.2);
     background: linear-gradient(to bottom, rgb(34 197 94 / 0.05), transparent);
+    background-image: linear-gradient(to bottom, rgb(34 197 94 / 0.05), transparent) !important;
     position: relative;
+    z-index: 1;
+    text-align: center;
 }
 
 .features-badge {
@@ -43,13 +48,15 @@
 }
 
 .features-title {
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-size: clamp(2rem, 8vw, 5rem);
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -0.03em;
     color: white;
     margin-bottom: 2rem;
     max-width: 900px;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .features-title-accent {
@@ -63,6 +70,8 @@
     max-width: 700px;
     font-family: monospace;
     opacity: 0.9;
+    text-align: center;
+    margin: 0 auto;
 }
 
 /* Section Title */
@@ -82,21 +91,69 @@
     position: relative;
 }
 
+/* Flip Card Styles */
 .feature-card-large {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 2rem;
+    perspective: 1000px;
+}
+
+.feature-card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 300ms ease;
+    cursor: pointer;
+}
+
+.feature-front,
+.feature-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid rgb(34 197 94 / 0.3);
+    box-shadow: 0px 0px 20px 2px rgba(34, 197, 94, 0.2);
+}
+
+.feature-front {
+    background-color: #0a0a0a;
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 2rem;
     padding: 2.5rem;
-    background: linear-gradient(135deg, rgb(0 0 0 / 0.6), transparent);
-    border: 1px solid rgb(34 197 94 / 0.1);
-    border-radius: 2px;
-    margin-bottom: 2rem;
-    transition: all 300ms ease;
+    background: linear-gradient(135deg, rgb(0 0 0 / 0.9), rgb(0 0 0 / 0.7));
 }
 
-.feature-card-large:hover {
-    background: linear-gradient(135deg, rgb(0 0 0 / 0.7), rgb(0 0 0 / 0.6));
-    border-color: rgb(34 197 94 / 0.3);
+.feature-back {
+    background-color: #0a0a0a;
+    transform: rotateY(180deg);
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, rgb(0 0 0 / 0.9), rgb(0 0 0 / 0.7));
+}
+
+.feature-back-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.feature-card-large:hover .feature-card-content {
+    transform: rotateY(180deg);
 }
 
 .feature-icon-box {

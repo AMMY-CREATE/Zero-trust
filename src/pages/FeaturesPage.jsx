@@ -4,6 +4,8 @@ import { PublicLayout } from "@/components/layout/PublicLayout";
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { DigitalRain } from "@/components/effects/DigitalRain";
 import { Link } from "react-router-dom";
+import Switch from "@/components/Switch";
+import Checkbox from "@/components/Checkbox";
 import "./FeaturesPage.css";
 
 const mainFeatures = [
@@ -97,20 +99,30 @@ export default function FeaturesPage() {
                         {mainFeatures.map((feature, i) => (
                             <ScrollReveal key={i} delay={i * 100} variant="slide-up">
                                 <div className="feature-card-large">
-                                    <div className="feature-icon-box">
-                                        <feature.icon className="feature-icon-large" />
-                                    </div>
-                                    <div className="feature-content">
-                                        <h3 className="feature-title-large">{feature.title}</h3>
-                                        <p className="feature-description-large">{feature.description}</p>
-                                        <ul className="feature-details">
-                                            {feature.details.map((detail, j) => (
-                                                <li key={j}>
-                                                    <span className="detail-dot" />
-                                                    {detail}
-                                                </li>
-                                            ))}
-                                        </ul>
+                                    <div className="feature-card-content">
+                                        <div className="feature-front">
+                                            <div className="feature-icon-box">
+                                                <feature.icon className="feature-icon-large" />
+                                            </div>
+                                            <div className="feature-content">
+                                                <h3 className="feature-title-large">{feature.title}</h3>
+                                                <p className="feature-description-large">{feature.description}</p>
+                                                <ul className="feature-details">
+                                                    {feature.details.map((detail, j) => (
+                                                        <li key={j}>
+                                                            <span className="detail-dot" />
+                                                            {detail}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div className="feature-back">
+                                            <div className="feature-back-content">
+                                                <h3 className="feature-title-large">{feature.title}</h3>
+                                                <p className="feature-description-large">{feature.description}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </ScrollReveal>
@@ -141,6 +153,29 @@ export default function FeaturesPage() {
                                     </div>
                                 </ScrollReveal>
                             ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* System Control Demo */}
+                <section className="features-system-control">
+                    <div className="features-container">
+                        <ScrollReveal delay={0} variant="slide-up">
+                            <h2 className="features-section-title">System Status</h2>
+                        </ScrollReveal>
+                        <div className="system-status-grid" style={{ display: 'flex', gap: '4rem', justifyContent: 'center', alignItems: 'center', padding: '4rem', background: 'rgba(0,0,0,0.5)', borderRadius: '1rem', border: '1px solid rgba(0,255,150,0.1)' }}>
+                            <div className="system-control-demo">
+                                <h3 className="text-xl font-mono text-primary mb-8 text-center">MANUAL OVERRIDE</h3>
+                                <Switch />
+                            </div>
+                            <div className="system-control-demo">
+                                <h3 className="text-xl font-mono text-primary mb-8 text-center">QUANTUM SYNC</h3>
+                                <Checkbox
+                                    id="feature-demo-checkbox"
+                                    checked={true}
+                                    scale={0.8}
+                                />
+                            </div>
                         </div>
                     </div>
                 </section>

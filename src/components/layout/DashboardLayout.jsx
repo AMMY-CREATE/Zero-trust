@@ -1,9 +1,12 @@
 import { DashboardSidebar } from "./DashboardSidebar";
-import { Bell, Search } from "lucide-react";
+import { Bell, Search, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
 
 export function DashboardLayout({ children, userRole, title, subtitle }) {
+    const navigate = useNavigate();
+
     return (
         <div className="min-h-screen bg-background">
             <DashboardSidebar userRole={userRole} />
@@ -13,9 +16,19 @@ export function DashboardLayout({ children, userRole, title, subtitle }) {
 
                 <header className="h-16 border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-30">
                     <div className="h-full px-6 flex items-center justify-between">
-                        <div>
-                            <h1 className="text-lg font-semibold">{title}</h1>
-                            {subtitle && <p className="text-sm text-muted-foreground">{subtitle}</p>}
+                        <div className="flex items-center gap-4">
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => navigate(-1)}
+                                className="text-muted-foreground hover:text-foreground"
+                            >
+                                <ArrowLeft className="h-5 w-5" />
+                            </Button>
+                            <div>
+                                <h1 className="text-lg font-semibold">{title}</h1>
+                                {subtitle && <p className="text-sm text-muted-foreground">{subtitle}</p>}
+                            </div>
                         </div>
 
                         <div className="flex items-center gap-4">
