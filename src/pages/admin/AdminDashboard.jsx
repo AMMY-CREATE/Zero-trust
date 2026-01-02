@@ -1,4 +1,5 @@
-import { Users, AlertTriangle, Activity, Bell } from "lucide-react";
+import { useState } from "react";
+import { Users, AlertTriangle, Activity, Bell, Play } from "lucide-react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { StatCard } from "@/components/dashboard/StatCard";
 import { ActivityChart } from "@/components/dashboard/ActivityChart";
@@ -7,13 +8,41 @@ import { RiskGauge } from "@/components/dashboard/RiskGauge";
 import { getDashboardStats, generateAlerts } from "@/lib/mockData";
 import { SeverityBadge } from "@/components/dashboard/SeverityBadge";
 import { formatDistanceToNow } from "date-fns";
+import { Button } from "@/components/ui/button";
+import ScanningLoader from "@/components/ScanningLoader";
 
 export default function AdminDashboard() {
+    const [isLoading, setIsLoading] = useState(false);
     const stats = getDashboardStats();
     const recentAlerts = generateAlerts(5);
 
+    const handleTestLoader = () => {
+        setIsLoading(true);
+        setTimeout(() => setIsLoading(false), 5000);
+    };
+
+    if (isLoading) {
+        return <ScanningLoader />;
+    }
+
     return (
         <DashboardLayout userRole="admin" title="Dashboard Overview" subtitle="Real-time security monitoring">
+
+            {/* Demo Control */}
+            <div className="mb-6 bg-card rounded-xl border border-primary/50 p-4 bg-primary/5">
+                <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                        <Play className="h-5 w-5 text-primary" />
+                        <div>
+                            <h3 className="font-semibold text-primary">Preview Loading Effect</h3>
+                            <p className="text-xs text-muted-foreground">Click to view the holographic scanning loader</p>
+                        </div>
+                    </div>
+                    <Button onClick={handleTestLoader} className="bg-primary text-black hover:bg-primary/90">
+                        Test Loader
+                    </Button>
+                </div>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <StatCard title="Active Users" value={stats.activeUsers} change="+12 from yesterday" changeType="positive" icon={Users} />

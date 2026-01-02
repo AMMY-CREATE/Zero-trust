@@ -5,10 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Switch from "@/components/Switch";
 import Checkbox from "@/components/Checkbox";
-import { User, Mail, Lock, Bell, Shield, Eye, EyeOff } from "lucide-react";
+import { User, Mail, Lock, Bell, Shield, Eye, EyeOff, Play } from "lucide-react";
+import ScanningLoader from "@/components/ScanningLoader";
 
 export default function ProfilePage() {
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [profile, setProfile] = useState({
         name: "John Doe",
         email: "john.doe@company.com",
@@ -23,9 +25,35 @@ export default function ProfilePage() {
         // Add save logic here
     };
 
+    const handleTestLoader = () => {
+        setIsLoading(true);
+        setTimeout(() => setIsLoading(false), 5000);
+    };
+
+    if (isLoading) {
+        return <ScanningLoader />;
+    }
+
     return (
         <DashboardLayout userRole="user" title="Profile Settings" subtitle="Manage your account preferences">
             <div className="max-w-4xl space-y-6">
+
+                {/* Demo Control */}
+                <div className="bg-card rounded-xl border border-primary/50 p-4 bg-primary/5">
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                            <Play className="h-5 w-5 text-primary" />
+                            <div>
+                                <h3 className="font-semibold text-primary">Preview Loading Effect</h3>
+                                <p className="text-xs text-muted-foreground">Click to see the full-screen hologprahic loader for 3 seconds</p>
+                            </div>
+                        </div>
+                        <Button onClick={handleTestLoader} className="bg-primary text-black hover:bg-primary/90">
+                            Test Loading Screen
+                        </Button>
+                    </div>
+                </div>
+
                 {/* Personal Information */}
                 <div className="bg-card rounded-xl border border-border p-6">
                     <div className="flex items-center gap-3 mb-6">

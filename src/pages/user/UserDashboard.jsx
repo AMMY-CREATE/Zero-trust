@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { getUserSecurityData } from "@/lib/mockData";
 import { RiskGauge } from "@/components/dashboard/RiskGauge";
-import { Shield, Smartphone, Laptop, Monitor, Bell, CheckCircle, AlertTriangle } from "lucide-react";
+import { Shield, Smartphone, Laptop, Monitor, Bell, CheckCircle, AlertTriangle, Play } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
+import { Button } from "@/components/ui/button";
+import ScanningLoader from "@/components/ScanningLoader";
 
 export default function UserDashboard() {
+    const [isLoading, setIsLoading] = useState(false);
     const userData = getUserSecurityData("USR-001");
 
     const deviceIcons = {
@@ -13,8 +17,33 @@ export default function UserDashboard() {
         desktop: Monitor,
     };
 
+    const handleTestLoader = () => {
+        setIsLoading(true);
+        setTimeout(() => setIsLoading(false), 5000);
+    };
+
+    if (isLoading) {
+        return <ScanningLoader />;
+    }
+
     return (
         <DashboardLayout userRole="user" title="My Security" subtitle="Your account security overview">
+            {/* Demo Control */}
+            <div className="mb-6 bg-card rounded-xl border border-primary/50 p-4 bg-primary/5">
+                <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                        <Play className="h-5 w-5 text-primary" />
+                        <div>
+                            <h3 className="font-semibold text-primary">Preview Loading Effect</h3>
+                            <p className="text-xs text-muted-foreground">Click to view the holographic scanning loader</p>
+                        </div>
+                    </div>
+                    <Button onClick={handleTestLoader} className="bg-primary text-black hover:bg-primary/90">
+                        Test Loader
+                    </Button>
+                </div>
+            </div>
+
             <div className="grid lg:grid-cols-3 gap-6">
 
                 <div className="bg-card rounded-xl border border-border p-6 text-center">
