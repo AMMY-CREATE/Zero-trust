@@ -33,8 +33,8 @@ export function Navbar() {
                             <div className="navbar-logo-dot" />
                         </div>
                         <div className="navbar-logo-text">
-                            <span className="navbar-logo-main">AMMY</span>
-                            <span className="navbar-logo-sub">PROJECT_v2</span>
+                            <span className="navbar-logo-main">ZTADS</span>
+                            <span className="navbar-logo-sub">SYSTEM_VERIFIED</span>
                         </div>
                     </Link>
 
@@ -61,8 +61,8 @@ export function Navbar() {
 
                     <div className="navbar-auth">
                         <div className="navbar-auth-status">
-                            <span className="navbar-auth-label">System_Auth</span>
-                            <span className="navbar-auth-status-text">Root_Access</span>
+                            <span className="navbar-auth-label">ZeroTrust_Engine</span>
+                            <span className="navbar-auth-status-text">Monitoring_Active</span>
                         </div>
 
                         <div className="navbar-buttons">

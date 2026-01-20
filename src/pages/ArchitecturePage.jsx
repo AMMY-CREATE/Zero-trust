@@ -22,14 +22,14 @@ const architectureLayers = [
     {
         name: "Detection Layer",
         icon: Zap,
-        description: "Real-time threat analysis and anomaly detection",
-        components: ["ML Pipeline", "Behavior Analyzer", "Threat Correlator", "Alert Engine"]
+        description: "Zero-Trust Engine & ML Models",
+        components: ["Isolation Forest", "Autoencoders", "Risk Scoring", "Alert Generation"]
     },
     {
         name: "Data Layer",
         icon: Database,
-        description: "Secure storage and event logging",
-        components: ["PostgreSQL", "MongoDB", "Event Store", "Cache Layer"]
+        description: "Secure storage for training & events",
+        components: ["PostgreSQL (Logs)", "MongoDB (Traffic)", "Training Datasets", "Feature Store"]
     },
 ];
 
@@ -100,7 +100,7 @@ export default function ArchitecturePage() {
 
                         <ScrollReveal delay={200} variant="fade-in">
                             <p className="architecture-subtitle">
-                                Scalable, resilient, and secure infrastructure designed for global enterprises.
+                                A multi-layered architecture integrating data collection, machine learning analysis, and real-time visualization.
                             </p>
                         </ScrollReveal>
                     </div>

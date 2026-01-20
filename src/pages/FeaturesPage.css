@@ -48,15 +48,18 @@
 }
 
 .features-title {
-    font-size: clamp(2rem, 8vw, 5rem);
+    font-size: clamp(2rem, 6vw, 4.5rem);
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -0.03em;
     color: white;
     margin-bottom: 2rem;
-    max-width: 900px;
+    max-width: 1200px;
     text-align: center;
-    white-space: nowrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.2;
 }
 
 .features-title-accent {
@@ -72,6 +75,9 @@
     opacity: 0.9;
     text-align: center;
     margin: 0 auto;
+    word-wrap: break-word;
+    white-space: normal;
+    padding: 0 1rem;
 }
 
 /* Section Title */
@@ -94,7 +100,7 @@
 /* Flip Card Styles */
 .feature-card-large {
     width: 100%;
-    height: 300px;
+    min-height: 300px;
     margin-bottom: 2rem;
     perspective: 1000px;
 }
@@ -150,6 +156,8 @@
     gap: 20px;
     padding: 2rem;
     text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .feature-card-large:hover .feature-card-content {
@@ -193,7 +201,10 @@
     color: rgb(161 161 170);
     line-height: 1.6;
     font-family: monospace;
+    font-family: monospace;
     margin-bottom: 1.5rem;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 .feature-details {
@@ -299,8 +310,14 @@
     background: linear-gradient(135deg, rgb(0 0 0 / 0.5), transparent);
     border: 1px solid rgb(34 197 94 / 0.1);
     border-radius: 2px;
+    border-radius: 2px;
     text-align: center;
     transition: all 300ms ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .performance-card:hover {
@@ -404,6 +421,14 @@
 
     .feature-card-large {
         grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .feature-front,
+    .feature-back {
+        position: relative;
+        height: auto;
+        min-height: 300px;
     }
 
     .feature-icon-box {

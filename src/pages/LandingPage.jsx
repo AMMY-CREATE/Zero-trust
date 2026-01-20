@@ -10,17 +10,17 @@ import { useState, useEffect } from "react";
 import "./LandingPage.css";
 
 const features = [
-    { icon: ShieldAlert, title: "Continuous Verification", description: "Never trust, always verify every access request", code: "PROT_V1" },
-    { icon: Brain, title: "AI-Based Detection", description: "Machine learning powered anomaly detection", code: "NEURAL_NET" },
-    { icon: Activity, title: "Risk Scoring", description: "Dynamic risk assessment for all users", code: "RISK_CALC" },
-    { icon: Bell, title: "Real-Time Alerts", description: "Instant notifications for security events", code: "ALERT_SVC" },
+    { icon: ShieldAlert, title: "Continuous Verification", description: "Verifies every access request regardless of origin", code: "ZERO_TRUST" },
+    { icon: Brain, title: "Unsupervised Learning", description: "Isolation Forest & Autoencoders to detect unknown threats", code: "ML_ENGINE" },
+    { icon: Activity, title: "Risk Scoring", description: "Dynamic risk assessment based on behavioral deviation", code: "RISK_SCORE" },
+    { icon: Bell, title: "Real-Time Detection", description: "Identifies threats with <2.3s average latency", code: "RT_MONITOR" },
 ];
 
 const stats = [
-    { value: "99.9%", label: "Detection Rate", prefix: "DET_RATE" },
-    { value: "<50ms", label: "Response Time", prefix: "LATENCY" },
-    { value: "10M+", label: "Events Analyzed", prefix: "DATA_VOL" },
-    { value: "24/7", label: "Monitoring", prefix: "UPTIME" },
+    { value: "92%", label: "Detection Accuracy", prefix: "ACCURACY" },
+    { value: "2.3s", label: "Avg Latency", prefix: "SPEED" },
+    { value: "10M+", label: "Events Analyzed", prefix: "DATA_SET" },
+    { value: "24/7", label: "Continuous Monitor", prefix: "UPTIME" },
 ];
 
 export default function LandingPage() {
@@ -169,7 +169,7 @@ export default function LandingPage() {
                         <Lock className="encryption-icon" />
                         <span className="encryption-text">AES_256_ENCRYPTED_SESSION</span>
                     </div>
-                    <span className="footer-copyright">© 2025 AMMY_PROJECT CORE_DIVISION</span>
+                    <span className="footer-copyright">© 2025 ZTADS | Department of CSE, CSVTU</span>
                 </div>
             </div>
         </PublicLayout>

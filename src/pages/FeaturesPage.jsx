@@ -12,14 +12,14 @@ const mainFeatures = [
     {
         icon: Shield,
         title: "Zero Trust Verification",
-        description: "Every access request is verified regardless of origin or trust level. Implements continuous authentication throughout user sessions.",
-        details: ["Multi-factor authentication", "Behavioral biometrics", "Device posture checking", "Context-aware policies"]
+        description: "Eliminates implicit trust. Verifies every user, device, and service attempting to access network resources.",
+        details: ["Continuous Verification", "Identity Validation", "Device Posture Check", "Least Privilege Access"]
     },
     {
         icon: Brain,
-        title: "AI-Powered Anomaly Detection",
-        description: "Machine learning models trained on billions of security events detect suspicious patterns in real-time.",
-        details: ["Neural networks for pattern recognition", "Behavioral baseline learning", "Threat correlation analysis", "Adaptive threat scoring"]
+        title: "Unsupervised Anomaly Detection",
+        description: "Utilizes Isolation Forest and Autoencoders to detect known and unknown threats without signatures.",
+        details: ["Isolation Forest (Outliers)", "Autoencoders (Pattern Recognition)", "Ensemble Learning", "92% Accuracy"]
     },
     {
         icon: Zap,
@@ -55,9 +55,9 @@ const securityFeatures = [
 ];
 
 const performanceMetrics = [
-    { metric: "Detection Latency", value: "<50ms", code: "LATENCY_OPTIMAL" },
-    { metric: "API Response", value: "<100ms", code: "API_PERF" },
-    { metric: "Uptime SLA", value: "99.99%", code: "AVAILABILITY" },
+    { metric: "Detection Latency", value: "2.3s", code: "AVG_LATENCY" },
+    { metric: "IsoForest Accuracy", value: "87%", code: "MODEL_V1" },
+    { metric: "Autoencoder Accuracy", value: "89%", code: "MODEL_V2" },
     { metric: "Throughput", value: "1M+ RPS", code: "SCALABILITY" },
 ];
 
@@ -206,9 +206,9 @@ export default function FeaturesPage() {
                     <div className="features-container">
                         <ScrollReveal delay={0} variant="slide-up">
                             <div className="cta-box">
-                                <h2 className="cta-title">Start Protecting Your Infrastructure</h2>
+                                <h2 className="cta-title">ZTADS Implementation</h2>
                                 <p className="cta-description">
-                                    Deploy Ammy Project and gain immediate visibility and control.
+                                    Project by Himanshu Pandey, guided by Mr. Siddharth Meshram (CSVTU).
                                 </p>
                                 <div className="cta-buttons">
                                     <Link to="/admin">

@@ -10,22 +10,22 @@ const missionPoints = [
     {
         icon: Shield,
         title: "Zero Trust Architecture",
-        description: "Never trust, always verify. Every access request is authenticated and authorized."
+        description: "Eliminating the concept of trusted internal networks. Always verify."
     },
     {
         icon: Brain,
-        title: "Behavioral Intelligence",
-        description: "AI-powered anomaly detection that learns your organization's normal patterns."
+        title: "Unsupervised Detection",
+        description: "Identifying known and unknown threats using Isolation Forest and Autoencoders."
     },
     {
         icon: Eye,
-        title: "Continuous Monitoring",
-        description: "Real-time visibility into all user activities and threat indicators."
+        title: "Comprehensive Visibility",
+        description: "Monitoring network traffic, access logs, and user behavior in real-time."
     },
     {
         icon: Zap,
-        title: "Instant Response",
-        description: "Automated threat response with sub-50ms detection to mitigation time."
+        title: "Adaptive Security",
+        description: "Intelligent protection that evolves with changing threat landscapes."
     },
 ];
 
@@ -44,8 +44,8 @@ const capabilities = [
     },
     {
         icon: Brain,
-        title: "ML-Based Detection",
-        description: "Machine learning models trained on millions of security events",
+        title: "Ensemble ML Models",
+        description: "Combining multiple algorithms (IsoForest + Autoencoder) for 92% accuracy",
         code: "NEURAL_NET"
     },
     {
@@ -71,7 +71,7 @@ export default function AboutPage() {
                         <ScrollReveal delay={0} variant="fade-in">
                             <div className="about-badge">
                                 <AlertTriangle className="about-badge-icon" />
-                                <span>ABOUT_AMMY_PROJECT</span>
+                                <span>Zero-Trust Anomaly Detection System</span>
                             </div>
                         </ScrollReveal>
 
@@ -84,9 +84,9 @@ export default function AboutPage() {
 
                         <ScrollReveal delay={200} variant="fade-in">
                             <p className="about-subtitle">
-                                Next-generation security that adapts to the evolving threat landscape.
+                                An Independent Project Report submitted to Chhattisgarh Swami Vivekanand Technical University (CSVTU), Bhilai.
                                 <br />
-                                Built for organizations that refuse to compromise on trust.
+                                <strong>Department of Computer Science & Engineering</strong>
                             </p>
                         </ScrollReveal>
                     </div>
@@ -153,16 +153,16 @@ export default function AboutPage() {
                             </ScrollReveal>
                             <ScrollReveal delay={100} variant="slide-up">
                                 <div className="stat-block">
-                                    <div className="stat-number">99.9%</div>
-                                    <div className="stat-text">Detection Rate</div>
-                                    <div className="stat-code">DETECTION_ACCURACY</div>
+                                    <div className="stat-number">92%</div>
+                                    <div className="stat-text">Ensemble Accuracy</div>
+                                    <div className="stat-code">DETECTION_RATE</div>
                                 </div>
                             </ScrollReveal>
                             <ScrollReveal delay={200} variant="slide-up">
                                 <div className="stat-block">
-                                    <div className="stat-number">&lt;50ms</div>
-                                    <div className="stat-text">Response Time</div>
-                                    <div className="stat-code">LATENCY_OPTIMAL</div>
+                                    <div className="stat-number">2.3s</div>
+                                    <div className="stat-text">Avg Latency</div>
+                                    <div className="stat-code">REAL_TIME_PROC</div>
                                 </div>
                             </ScrollReveal>
                             <ScrollReveal delay={300} variant="slide-up">
@@ -219,9 +219,11 @@ export default function AboutPage() {
                     <div className="about-container">
                         <ScrollReveal delay={0} variant="slide-up">
                             <div className="cta-box">
-                                <h2 className="cta-title">Ready to Secure Your Organization?</h2>
-                                <p className="cta-description">
-                                    Join leading enterprises that trust Ammy Project for their security infrastructure.
+                                <h2 className="cta-title">Project Team</h2>
+                                <p className="cta-description text-lg">
+                                    <strong>Developed By:</strong> Himanshu Pandey (Roll: 300012824024)<br />
+                                    <strong>Guided By:</strong> Mr. Siddharth Meshram (Asst. Professor)<br />
+                                    <strong>Institution:</strong> UTD, CSVTU Bhilai
                                 </p>
                                 <div className="cta-buttons">
                                     <Link to="/admin">

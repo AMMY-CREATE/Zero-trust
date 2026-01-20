@@ -1,22 +1,32 @@
 
 export const generateUserActivities = (countCount = 50) => {
-    const devices = ['Windows 11 - Chrome', 'MacOS - Safari', 'Linux - Firefox', 'iOS - Mobile App', 'Android - Mobile App'];
-    const locations = ['New York, USA', 'London, UK', 'Tokyo, Japan', 'Sydney, Australia', 'Berlin, Germany', 'Paris, France', 'Toronto, Canada'];
-    const names = ['John Smith', 'Sarah Johnson', 'Michael Chen', 'Emily Davis', 'David Wilson', 'Jessica Brown', 'Robert Taylor', 'Amanda Miller', 'Christopher Lee', 'Jennifer Garcia'];
+    const devices = ['Windows 11 - Chrome', 'Ubuntu 20.04 LTS - Firefox', 'MacOS - Safari', 'Android - ZTADS App'];
+    const locations = ['Bhilai, India', 'Raipur, India', 'New Delhi, India', 'Mumbai, India', 'New York, USA', 'London, UK', 'Moscow, Russia'];
+    const names = [
+        'Himanshu Pandey', // The Student
+        'Siddharth Meshram', // The Guide
+        'Pankaj Mishra', // Faculty
+        'Rahul Sharma',
+        'Priya Patel',
+        'Amit Kumar',
+        'Sneha Gupta',
+        'Vikram Singh'
+    ];
 
     return Array.from({ length: countCount }, (_, i) => {
         const riskScore = Math.floor(Math.random() * 100);
         const riskLevel = riskScore < 40 ? 'low' : riskScore < 70 ? 'medium' : 'high';
-        const status = riskScore < 50 ? 'normal' : riskScore < 80 ? 'suspicious' : 'blocked';
+        // Zero-Trust Concept: Verify every access
+        const status = riskScore < 50 ? 'verified' : riskScore < 80 ? 'verification_pending' : 'blocked';
 
         return {
             id: `ACT-${1000 + i}`,
-            userId: `USR-${100 + (i % 10)}`,
+            userId: `USR-${100 + (i % names.length)}`,
             userName: names[i % names.length],
             loginTime: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
             device: devices[Math.floor(Math.random() * devices.length)],
             location: locations[Math.floor(Math.random() * locations.length)],
-            ipAddress: `${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`,
+            ipAddress: `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`, // Internal mostly, but some external for testing
             riskLevel,
             riskScore,
             status,
@@ -26,55 +36,59 @@ export const generateUserActivities = (countCount = 50) => {
 
 
 export const generateAnomalies = (countCount = 20) => {
+    // Anomalies derived from Chapter 5.1 & 1.4
     const types = [
-        'Unusual Login Time',
-        'Geographic Impossibility',
-        'Multiple Failed Attempts',
-        'Unusual Data Access',
-        'Privilege Escalation Attempt',
-        'Unusual Network Activity',
-        'Device Fingerprint Mismatch',
-        'Session Hijacking Attempt',
+        'Unusual Network Traffic',
+        'Potential Data Exfiltration',
+        'Suspicious Access Attempt',
+        'Abnormal User Behavior',
+        'Unknown Threat (Zero-Day)',
+        'Privilege Escalation',
+        'Device Fingerprint Mismatch'
     ];
 
-    const descriptions = {
-        'Unusual Login Time': 'Login attempt detected outside normal working hours',
-        'Geographic Impossibility': 'Login from location inconsistent with previous activity',
-        'Multiple Failed Attempts': 'Multiple failed authentication attempts detected',
-        'Unusual Data Access': 'Access to sensitive data outside normal patterns',
-        'Privilege Escalation Attempt': 'Attempt to access resources beyond user permissions',
-        'Unusual Network Activity': 'Abnormal network traffic patterns detected',
-        'Device Fingerprint Mismatch': 'Login from unrecognized device',
-        'Session Hijacking Attempt': 'Potential session token compromise detected',
+    const modelMappedInfo = {
+        'Unusual Network Traffic': { description: 'Outlier detected in packet timing/size', model: 'Isolation Forest' },
+        'Potential Data Exfiltration': { description: 'High volume outbound traffic detected', model: 'Autoencoder' },
+        'Suspicious Access Attempt': { description: 'Access from implicit trust zone denied', model: 'Zero-Trust Policy' },
+        'Abnormal User Behavior': { description: 'Deviation from established behavioral baseline', model: 'Autoencoder (LSTM)' },
+        'Unknown Threat (Zero-Day)': { description: 'Pattern does not match known signatures', model: 'Unsupervised Learning' },
+        'Privilege Escalation': { description: 'Unauthorized attempt to access Admin resources', model: 'Behavioral Analysis' },
+        'Device Fingerprint Mismatch': { description: 'Device integrity check failed', model: 'Device Posture Check' }
     };
 
-    const names = ['John Smith', 'Sarah Johnson', 'Michael Chen', 'Emily Davis', 'David Wilson'];
-    const statuses = ['new', 'investigating', 'resolved', 'false_positive'];
+    const names = ['Himanshu Pandey', 'Siddharth Meshram', 'System Admin', 'Guest User', 'Service Account'];
+    const statuses = ['new', 'analyzing', 'resolved', 'false_positive'];
 
     return Array.from({ length: countCount }, (_, i) => {
         const type = types[Math.floor(Math.random() * types.length)];
-        const anomalyScore = 0.5 + Math.random() * 0.5;
+        const info = modelMappedInfo[type];
+        const anomalyScore = 0.65 + Math.random() * 0.35; // Tend towards higher scores for anomalies
+
+        // From Report: Avg Latency 2.3s, so simulation timestamps might reflect recent processing
+
         const severity =
-            anomalyScore < 0.6 ? 'low' :
-                anomalyScore < 0.75 ? 'medium' :
-                    anomalyScore < 0.9 ? 'high' : 'critical';
+            anomalyScore < 0.75 ? 'low' :
+                anomalyScore < 0.85 ? 'medium' :
+                    anomalyScore < 0.95 ? 'high' : 'critical';
 
         return {
             id: `ANM-${2000 + i}`,
             userId: `USR-${100 + (i % 5)}`,
             userName: names[i % names.length],
             type,
-            description: descriptions[type],
+            description: info.description,
+            detectionModel: info.model, // Added field
             timestamp: new Date(Date.now() - Math.random() * 48 * 60 * 60 * 1000).toISOString(),
             anomalyScore,
             severity,
             status: statuses[Math.floor(Math.random() * statuses.length)],
             features: {
-                login_hour: Math.random(),
-                failed_attempts: Math.random(),
-                location_distance: Math.random(),
-                device_trust: Math.random(),
-                session_duration: Math.random(),
+                reconstruction_error: Math.random(), // For Autoencoder
+                isolation_path_length: Math.random(), // For Isolation Forest
+                packet_size_variance: Math.random(),
+                login_frequency: Math.random(),
+                geo_velocity: Math.random(),
             },
         };
     }).sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
@@ -83,10 +97,10 @@ export const generateAnomalies = (countCount = 20) => {
 
 export const generateAlerts = (countCount = 30) => {
     const alertTypes = [
-        { type: 'anomaly', titles: ['Anomaly Detected', 'Suspicious Behavior Alert', 'Unusual Activity Pattern'] },
-        { type: 'threat', titles: ['Insider Threat Warning', 'Potential Data Breach', 'Unauthorized Access Attempt'] },
-        { type: 'system', titles: ['System Health Warning', 'ML Model Updated', 'Database Backup Complete'] },
-        { type: 'policy', titles: ['Policy Violation', 'Access Rule Triggered', 'Compliance Alert'] },
+        { type: 'anomaly', titles: ['High Reconstruction Error', 'Isolation Forest Outlier', 'Behavioral Deviation'] },
+        { type: 'threat', titles: ['Potential APT Detected', 'Data Exfiltration Warning', 'Unauthorized Lateral Movement'] },
+        { type: 'system', titles: ['Model Retraining Complete', 'High Inference Latency', 'Database Backup (PostgreSQL)'] },
+        { type: 'policy', titles: ['Zero-Trust Verification Failed', 'BYOD Policy Violation', 'Compliance Audit Logged'] },
     ];
 
     const severities = ['info', 'warning', 'critical'];
@@ -99,29 +113,39 @@ export const generateAlerts = (countCount = 30) => {
             id: `ALR-${3000 + i}`,
             type: alertType.type,
             title: alertType.titles[Math.floor(Math.random() * alertType.titles.length)],
-            description: `Alert triggered for security event requiring attention`,
+            description: `ZTADS Detection Engine flagged this event. Risk Score: ${Math.floor(Math.random() * 100)}`,
             timestamp: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000).toISOString(),
             severity: severities[Math.floor(Math.random() * severities.length)],
             status: statuses[Math.floor(Math.random() * statuses.length)],
-            userId: Math.random() > 0.3 ? `USR-${100 + Math.floor(Math.random() * 10)}` : undefined,
+            userId: Math.random() > 0.3 ? `USR-${100 + Math.floor(Math.random() * 5)}` : undefined,
         };
     }).sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 };
 
 
 export const generateRiskProfiles = (countCount = 10) => {
-    const names = ['John Smith', 'Sarah Johnson', 'Michael Chen', 'Emily Davis', 'David Wilson', 'Jessica Brown', 'Robert Taylor', 'Amanda Miller', 'Christopher Lee', 'Jennifer Garcia'];
-    const departments = ['Engineering', 'Finance', 'HR', 'Sales', 'Marketing', 'Operations', 'IT', 'Legal'];
+    const names = [
+        'Himanshu Pandey',
+        'Siddharth Meshram',
+        'Rahul Sharma',
+        'Priya Patel',
+        'Amit Kumar',
+        'Sneha Gupta',
+        'Vikram Singh',
+        'Anjali Desai'
+    ];
+    const departments = ['CSE Dept', 'Data Science', 'Administration', 'Faculty', 'IT Support'];
 
     return Array.from({ length: countCount }, (_, i) => {
         const riskScore = Math.floor(Math.random() * 100);
         const riskLevel = riskScore < 40 ? 'low' : riskScore < 70 ? 'medium' : 'high';
-        const accessDecision = riskLevel === 'low' ? 'allowed' : riskLevel === 'medium' ? 're-auth' : 'blocked';
+        // ZTADS Response
+        const accessDecision = riskLevel === 'low' ? 'allowed' : riskLevel === 'medium' ? 'step_up_auth' : 'quarantined';
 
         return {
             userId: `USR-${100 + i}`,
             userName: names[i % names.length],
-            email: `${names[i % names.length].toLowerCase().replace(' ', '.')}@company.com`,
+            email: `${names[i % names.length].toLowerCase().replace(' ', '.')}@csytu.ac.in`, // University domain
             department: departments[Math.floor(Math.random() * departments.length)],
             riskScore,
             riskLevel,
@@ -135,14 +159,14 @@ export const generateRiskProfiles = (countCount = 10) => {
 
 
 export const getDashboardStats = () => ({
-    activeUsers: 142,
-    anomaliesDetected: 23,
-    highRiskUsers: 8,
-    alertsToday: 15,
-    systemHealth: 94,
-    threatsBlocked: 156,
-    avgRiskScore: 32,
-    totalSessions: 1247,
+    activeUsers: 450, // University scale
+    anomaliesDetected: 42,
+    highRiskUsers: 12,
+    alertsToday: 28,
+    systemHealth: 98, // "High processing performance"
+    threatsBlocked: 145, // "Prevention of costly data breaches"
+    modelAccuracy: '92%', // From Report (Ensemble)
+    avgLatency: '2.3s', // From Report
 });
 
 
@@ -150,47 +174,44 @@ export const getActivityTrendData = () => {
     const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     return days.map(day => ({
         name: day,
-        logins: Math.floor(50 + Math.random() * 100),
-        anomalies: Math.floor(Math.random() * 15),
-        blocked: Math.floor(Math.random() * 5),
+        normal_traffic: Math.floor(500 + Math.random() * 200),
+        anomalies: Math.floor(Math.random() * 20), // Low % of total traffic
+        blocked_threats: Math.floor(Math.random() * 10),
     }));
 };
 
 
 export const getAnomalyDistributionData = () => [
-    { name: 'Unusual Login Time', value: 35, color: 'hsl(var(--chart-1))' },
-    { name: 'Geographic Issues', value: 25, color: 'hsl(var(--chart-2))' },
-    { name: 'Failed Attempts', value: 20, color: 'hsl(var(--chart-3))' },
-    { name: 'Data Access', value: 12, color: 'hsl(var(--chart-4))' },
-    { name: 'Other', value: 8, color: 'hsl(var(--chart-5))' },
+    { name: 'Network Anomalies (Isolation Forest)', value: 45, color: 'hsl(var(--chart-1))' },
+    { name: 'Behavioral Deviation (Autoencoder)', value: 30, color: 'hsl(var(--chart-2))' },
+    { name: 'Access Violations', value: 15, color: 'hsl(var(--chart-3))' },
+    { name: 'Data Exfiltration', value: 10, color: 'hsl(var(--chart-4))' },
 ];
 
 
 export const getRiskDistributionData = () => [
-    { name: 'Low Risk', value: 65, color: 'hsl(var(--success))' },
-    { name: 'Medium Risk', value: 25, color: 'hsl(var(--warning))' },
-    { name: 'High Risk', value: 10, color: 'hsl(var(--danger))' },
+    { name: 'Low Risk (Trusted)', value: 70, color: 'hsl(var(--success))' },
+    { name: 'Medium Risk (Monitor)', value: 20, color: 'hsl(var(--warning))' },
+    { name: 'High Risk (Blocked)', value: 10, color: 'hsl(var(--danger))' },
 ];
 
 
 export const getUserSecurityData = (userId) => ({
-    securityScore: 85,
+    securityScore: 88,
     lastLogin: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
     loginHistory: Array.from({ length: 10 }, (_, i) => ({
         id: `LOGIN-${i}`,
         timestamp: new Date(Date.now() - i * 24 * 60 * 60 * 1000).toISOString(),
-        device: ['Chrome on Windows', 'Safari on MacOS', 'Mobile App'][Math.floor(Math.random() * 3)],
-        location: ['New York, USA', 'London, UK', 'Home Network'][Math.floor(Math.random() * 3)],
-        status: Math.random() > 0.1 ? 'success' : 'suspicious',
+        device: ['Chrome on Windows 11', 'Firefox on Ubuntu', 'Safari on MacOS'][Math.floor(Math.random() * 3)],
+        location: ['Bhilai, India', 'Raipur, India', 'Remote VPN'][Math.floor(Math.random() * 3)],
+        status: Math.random() > 0.1 ? 'verified' : 'flagged',
     })),
     devices: [
-        { id: 'DEV-1', name: 'MacBook Pro', type: 'laptop', lastUsed: 'Just now', trusted: true },
-        { id: 'DEV-2', name: 'iPhone 15', type: 'mobile', lastUsed: '2 hours ago', trusted: true },
-        { id: 'DEV-3', name: 'Windows Desktop', type: 'desktop', lastUsed: '5 days ago', trusted: true },
+        { id: 'DEV-1', name: 'Workstation (Ubuntu)', type: 'desktop', lastUsed: 'Just now', trusted: true },
+        { id: 'DEV-2', name: 'Himanshu Phone', type: 'mobile', lastUsed: '2 hours ago', trusted: true },
     ],
     notifications: [
-        { id: 'NOT-1', type: 'info', message: 'Your security score has improved', timestamp: new Date().toISOString() },
-        { id: 'NOT-2', type: 'warning', message: 'New device login detected', timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString() },
-        { id: 'NOT-3', type: 'success', message: 'Password updated successfully', timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() },
+        { id: 'NOT-1', type: 'info', message: 'Baseline behavior model updated', timestamp: new Date().toISOString() },
+        { id: 'NOT-2', type: 'warning', message: 'Unusual login time detected (Flagged)', timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString() },
     ],
 });

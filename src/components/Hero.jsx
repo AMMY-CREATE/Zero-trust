@@ -94,22 +94,24 @@ export const Hero = () => {
 
                     <div className="hero-title-wrapper">
                         <h1 className="hero-title">
-                            <span className="hero-title-main">Ammy</span>
-                            <span className="hero-title-accent">Project</span>
+                            <span className="hero-title-main">ZTADS</span>
+                            <span className="hero-title-accent">System</span>
                         </h1>
                         <div className="hero-divider-wrapper">
                             <div className="hero-divider" />
                             <p className="hero-divider-text">
-                                Anomaly Detection & Response
+                                Zero-Trust Anomaly Detection
                             </p>
                             <div className="hero-divider" />
                         </div>
                     </div>
 
                     <p className="hero-description">
-                        Securing the digital frontier. Behavioral intelligence meets next-gen encryption.
+                        "Never Trust, Always Verify"
                         <br />
-                        <span className="hero-description-alert">STATUS: ADVERSARY DETECTED</span>
+                        <span className="text-sm opacity-80">By Himanshu Pandey (Roll: 300012824024) | Guided by Mr. Siddharth Meshram</span>
+                        <br />
+                        <span className="hero-description-alert">STATUS: MONITORING ACTIVE</span>
                     </p>
 
                     <div className="hero-actions">

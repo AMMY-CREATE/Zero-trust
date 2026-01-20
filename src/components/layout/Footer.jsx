@@ -16,7 +16,8 @@ export function Footer() {
                             </span>
                         </Link>
                         <p className="footer-description">
-                            Zero-Trust Anomaly Detection System. Never Trust, Always Verify.
+                            Zero-Trust Anomaly Detection System (ZTADS).
+                            <br />"Never Trust, Always Verify."
                         </p>
                         <div className="footer-social-links">
                             <a href="#" className="footer-social-link">
@@ -57,10 +58,9 @@ export function Footer() {
                     <div className="footer-column">
                         <h3 className="footer-column-title">Academic</h3>
                         <ul className="footer-column-list">
-                            <li className="footer-column-item"><span>CSE Data Science Project</span></li>
-                            <li className="footer-column-item"><span>Cybersecurity Research</span></li>
-                            <li className="footer-column-item"><span>Machine Learning</span></li>
-                            <li className="footer-column-item"><span>Documentation</span></li>
+                            <li className="footer-column-item"><span>Department of CSE</span></li>
+                            <li className="footer-column-item"><span>CSVTU Bhilai</span></li>
+                            <li className="footer-column-item"><span>Under Guidance of Mr. Siddharth Meshram</span></li>
                         </ul>
                     </div>
                 </div>
@@ -68,7 +68,7 @@ export function Footer() {
                 <div className="footer-bottom">
                     <div className="footer-bottom-left">
                         <p className="footer-bottom-text">
-                            © {new Date().getFullYear()} ZTADS. Academic Project - CSE Data Science.
+                            © {new Date().getFullYear()} ZTADS. Developed by Himanshu Pandey.
                         </p>
                         <p className="footer-bottom-text">
                             Built with React, JavaScript & Machine Learning

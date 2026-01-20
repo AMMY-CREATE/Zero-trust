@@ -38,7 +38,11 @@ export default function LoginPage() {
                     <h1 className="login-title">
                         <span className="login-title-primary">ZT</span>ADS
                     </h1>
-                    <p className="login-subtitle">Sign in to access the security dashboard</p>
+                    <p className="login-subtitle">
+                        Zero-Trust Anomaly Detection System
+                        <br />
+                        <span className="text-xs opacity-70">Project by Himanshu Pandey | Guided by Mr. Siddharth Meshram</span>
+                    </p>
                 </div>
 
                 <div className="login-card">
