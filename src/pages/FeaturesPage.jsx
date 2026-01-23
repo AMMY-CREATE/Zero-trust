@@ -58,7 +58,7 @@ const performanceMetrics = [
     { metric: "Detection Latency", value: "2.3s", code: "AVG_LATENCY" },
     { metric: "IsoForest Accuracy", value: "87%", code: "MODEL_V1" },
     { metric: "Autoencoder Accuracy", value: "89%", code: "MODEL_V2" },
-    { metric: "Throughput", value: "1M+ RPS", code: "SCALABILITY" },
+    
 ];
 
 export default function FeaturesPage() {

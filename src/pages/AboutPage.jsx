@@ -146,14 +146,14 @@ export default function AboutPage() {
                         <div className="stats-grid">
                             <ScrollReveal delay={0} variant="slide-up">
                                 <div className="stat-block">
-                                    <div className="stat-number">50+</div>
+                                    <div className="stat-number">0</div>
                                     <div className="stat-text">Enterprise Clients</div>
                                     <div className="stat-code">CLIENTS_ACTIVE</div>
                                 </div>
                             </ScrollReveal>
                             <ScrollReveal delay={100} variant="slide-up">
                                 <div className="stat-block">
-                                    <div className="stat-number">92%</div>
+                                    <div className="stat-number">25%</div>
                                     <div className="stat-text">Ensemble Accuracy</div>
                                     <div className="stat-code">DETECTION_RATE</div>
                                 </div>
@@ -167,7 +167,7 @@ export default function AboutPage() {
                             </ScrollReveal>
                             <ScrollReveal delay={300} variant="slide-up">
                                 <div className="stat-block">
-                                    <div className="stat-number">10B+</div>
+                                    <div className="stat-number">0</div>
                                     <div className="stat-text">Events Processed</div>
                                     <div className="stat-code">DATA_VOLUME</div>
                                 </div>
