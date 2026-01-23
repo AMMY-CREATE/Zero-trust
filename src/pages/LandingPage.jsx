@@ -3,7 +3,7 @@ import { Activity, Brain, Bell, Eye, ArrowRight, ShieldAlert, Cpu, Network, Zap,
 import { Button } from "@/components/ui/button";
 import { PublicLayout } from "@/components/layout/PublicLayout";
 import { Hero } from "@/components/Hero";
-import { SmokeOverlay } from "@/components/effects/SmokeOverlay";
+
 import { ScrollReveal } from "@/components/effects/ScrollReveal";
 import { DigitalRain } from "@/components/effects/DigitalRain";
 import { useState, useEffect } from "react";
@@ -17,9 +17,9 @@ const features = [
 ];
 
 const stats = [
-    { value: "92%", label: "Detection Accuracy", prefix: "ACCURACY" },
+    { value: "25%", label: "Detection Accuracy", prefix: "ACCURACY" },
     { value: "2.3s", label: "Avg Latency", prefix: "SPEED" },
-    { value: "10M+", label: "Events Analyzed", prefix: "DATA_SET" },
+    { value: "0", label: "Events Analyzed", prefix: "DATA_SET" },
     { value: "24/7", label: "Continuous Monitor", prefix: "UPTIME" },
 ];
 
@@ -32,7 +32,7 @@ export default function LandingPage() {
     }, []);
     return (
         <PublicLayout>
-            <SmokeOverlay />
+           
 
             {showHero && <Hero />}
             <div className="main-wrapper">

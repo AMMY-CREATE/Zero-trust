@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import ScanningLoader from "./components/ScanningLoader";
+import { SmokeOverlay } from "@/components/effects/SmokeOverlay";
 
 // Lazy load pages
 const LandingPage = lazy(() => import("./pages/LandingPage"));
@@ -28,6 +29,7 @@ const NotificationsPage = lazy(() => import("./pages/user/NotificationsPage"));
 const ProfilePage = lazy(() => import("./pages/user/ProfilePage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -37,6 +39,7 @@ const App = () => (
             <Sonner />
             <BrowserRouter>
                 <Suspense fallback={<ScanningLoader />}>
+                 <SmokeOverlay />
                     <Routes>
                         <Route path="/" element={<LandingPage />} />
                         <Route path="/information" element={<InformationPage />} />
