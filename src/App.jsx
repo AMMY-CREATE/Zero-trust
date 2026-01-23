@@ -9,6 +9,7 @@ import ScanningLoader from "./components/ScanningLoader";
 // Lazy load pages
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
+const InformationPage = lazy(() => import("./pages/InformationPage"));
 const FeaturesPage = lazy(() => import("./pages/FeaturesPage"));
 const ArchitecturePage = lazy(() => import("./pages/ArchitecturePage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
@@ -38,6 +39,7 @@ const App = () => (
                 <Suspense fallback={<ScanningLoader />}>
                     <Routes>
                         <Route path="/" element={<LandingPage />} />
+                        <Route path="/information" element={<InformationPage />} />
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/features" element={<FeaturesPage />} />
                         <Route path="/architecture" element={<ArchitecturePage />} />

@@ -4,8 +4,14 @@ import "./Footer.css";
 
 export function Footer() {
     return (
-        <footer className="footer">
-            <div className="footer-container">
+        <footer className="footer relative pt-12">
+            <svg className="footer-wave" viewBox="0 0 1440 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 32h1440V12c-150-15-350 15-720 0s-570-15-720 0v20z" />
+                <path className="footer-wave-accent" d="M0 17c150-15 350 15 720 0s570-15 720 0" strokeDasharray="5,10" />
+            </svg>
+            <div className="footer-cyber-grid" />
+            <div className="footer-bg-glow" />
+            <div className="footer-container relative z-10">
                 <div className="footer-grid">
 
                     <div className="footer-section">

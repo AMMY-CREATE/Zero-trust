@@ -6,6 +6,7 @@ import "./Navbar.css";
 
 const navItems = [
     { label: "Home", path: "/" },
+    { label: "Information", path: "/information" },
     { label: "About", path: "/about" },
     { label: "Features", path: "/features" },
     { label: "Architecture", path: "/architecture" },

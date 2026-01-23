@@ -1,16 +1,62 @@
 /* Footer Component Styles */
 
 .footer {
-  border-top: 1px solid rgb(39 39 42);
-  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(var(--primary-rgb), 0.1);
+  background: black;
+  position: relative;
+  overflow: hidden;
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+}
+
+.footer-cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(var(--primary-rgb), 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--primary-rgb), 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(to bottom, transparent, black 20%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-bg-glow {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(var(--primary-rgb), 0.15) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.footer-wave {
+  position: absolute;
+  top: -31px;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  fill: black;
+  transform: rotate(180deg);
+  z-index: 10;
+}
+
+.footer-wave-accent {
+  fill: none;
+  stroke: rgba(var(--primary-rgb), 0.2);
+  stroke-width: 0.5;
 }
 
 .footer-container {
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
   max-width: 1280px;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
 }
 
 .footer-grid {
@@ -46,25 +92,32 @@
 }
 
 .footer-logo-icon {
-  height: 2rem;
-  width: 2rem;
-  color: rgb(34 197 94);
+  height: 1.5rem;
+  width: 1.5rem;
+  color: var(--primary);
+  filter: drop-shadow(0 0 10px var(--primary));
   flex-shrink: 0;
 }
 
 .footer-logo-text {
-  font-weight: 700;
-  font-size: 1.25rem;
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: -0.05em;
+  color: white;
+  text-transform: uppercase;
 }
 
 .footer-logo-text-primary {
-  color: rgb(34 197 94);
+  color: var(--primary);
 }
 
 .footer-description {
-  color: rgb(161 161 170);
-  font-size: 0.875rem;
-  line-height: 1.6;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  font-family: 'JetBrains Mono', monospace;
+  opacity: 0.7;
+  max-width: 300px;
 }
 
 .footer-social-links {
@@ -73,21 +126,29 @@
 }
 
 .footer-social-link {
-  color: rgb(161 161 170);
-  transition: color 300ms ease;
-  text-decoration: none;
+  color: var(--muted-foreground);
+  background: rgba(var(--primary-rgb), 0.05);
+  border: 1px solid rgba(var(--primary-rgb), 0.1);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .footer-social-link:hover {
-  color: rgb(34 197 94);
+  color: var(--primary);
+  background: rgba(var(--primary-rgb), 0.1);
+  border-color: var(--primary);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.2);
 }
 
 .footer-social-icon {
-  height: 1.25rem;
-  width: 1.25rem;
+  height: 1.125rem;
+  width: 1.125rem;
 }
 
 /* Footer Column */
@@ -98,11 +159,12 @@
 }
 
 .footer-column-title {
-  font-weight: 600;
-  color: white;
-  font-size: 0.95rem;
+  font-weight: 800;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
 }
 
 .footer-column-list {
@@ -115,28 +177,32 @@
 }
 
 .footer-column-item {
-  font-size: 0.875rem;
-  color: rgb(161 161 170);
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .footer-column-link {
-  color: rgb(161 161 170);
+  color: var(--muted-foreground);
   text-decoration: none;
-  transition: color 300ms ease;
+  transition: all 0.3s ease;
+  opacity: 0.6;
 }
 
 .footer-column-link:hover {
-  color: rgb(34 197 94);
+  color: white;
+  opacity: 1;
+  padding-left: 5px;
 }
 
 /* Footer Bottom */
 .footer-bottom {
-  border-top: 1px solid rgb(39 39 42);
-  margin-top: 2rem;
+  border-top: 1px solid rgba(var(--primary-rgb), 0.1);
+  margin-top: 3rem;
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  padding-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -148,8 +214,12 @@
 }
 
 .footer-bottom-text {
-  font-size: 0.875rem;
-  color: rgb(161 161 170);
+  font-size: 0.6875rem;
+  color: var(--muted-foreground);
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
 }
 
 .footer-bottom-left {

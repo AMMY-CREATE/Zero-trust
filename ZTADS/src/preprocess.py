@@ -5,8 +5,9 @@ import joblib
 import os
 
 # Configuration
-DATA_PATH = r"..\data\behavior_logs.csv"
-MODEL_DIR = r"..\model"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_PATH = os.path.join(BASE_DIR, "data", "behavior_logs.csv")
+MODEL_DIR = os.path.join(BASE_DIR, "model")
 SCALER_PATH = os.path.join(MODEL_DIR, "scaler.pkl")
 
 def load_data(filepath):
