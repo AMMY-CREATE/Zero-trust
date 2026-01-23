@@ -1,10 +1,8 @@
 /* Footer Component Styles */
 
 .footer {
-  border-top: 1px solid rgba(var(--primary-rgb), 0.1);
   background: black;
   position: relative;
-  overflow: hidden;
   color: var(--foreground);
   font-family: 'Inter', sans-serif;
 }
@@ -19,6 +17,7 @@
   mask-image: linear-gradient(to bottom, transparent, black 20%);
   pointer-events: none;
   z-index: 0;
+  overflow: hidden;
 }
 
 .footer-bg-glow {
@@ -34,21 +33,72 @@
   z-index: 1;
 }
 
-.footer-wave {
+.footer-waves {
   position: absolute;
-  top: -31px;
+  top: -120px;
   left: 0;
   width: 100%;
-  height: 32px;
-  fill: black;
-  transform: rotate(180deg);
+  height: 120px;
+  overflow: hidden;
+  line-height: 0;
   z-index: 10;
+  pointer-events: none;
 }
 
-.footer-wave-accent {
-  fill: none;
+.footer-wave {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  transform: translate3d(0, 0, 0);
+}
+
+.footer-wave-1 {
+  fill: rgba(var(--primary-rgb), 0.08);
+  stroke: rgba(var(--primary-rgb), 0.1);
+  stroke-width: 0.5;
+  z-index: 1;
+  bottom: 0;
+}
+
+.footer-wave-2 {
+  fill: rgba(var(--primary-rgb), 0.15);
   stroke: rgba(var(--primary-rgb), 0.2);
   stroke-width: 0.5;
+  z-index: 2;
+  bottom: -5px;
+  transform: scaleX(-1);
+  /* Flip for visual variety */
+}
+
+.footer-wave-3 {
+  fill: black;
+  z-index: 3;
+  bottom: -10px;
+}
+
+/* Footer Smoke Effect */
+.footer-smoke-container {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.footer-smoke-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(var(--primary-rgb), 0.08), transparent 70%);
+  filter: blur(40px);
+  opacity: 0.6;
+}
+
+.layer-2 {
+  background: radial-gradient(circle at 30% 60%, rgba(var(--primary-rgb), 0.05), transparent 60%);
 }
 
 .footer-container {

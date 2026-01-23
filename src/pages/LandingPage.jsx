@@ -161,17 +161,6 @@ export default function LandingPage() {
                     <div className="cta-blur" />
                 </section>
             </div>
-
-            {/* Footer Branding Overlay */}
-            <div className="footer-section">
-                <div className="footer-container">
-                    <div className="footer-encryption">
-                        <Lock className="encryption-icon" />
-                        <span className="encryption-text">AES_256_ENCRYPTED_SESSION</span>
-                    </div>
-                    <span className="footer-copyright">© 2025 ZTADS | Department of CSE, CSVTU</span>
-                </div>
-            </div>
         </PublicLayout>
     );
 }

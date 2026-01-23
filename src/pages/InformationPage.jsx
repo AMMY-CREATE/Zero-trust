@@ -259,8 +259,8 @@ const InformationPage = () => {
                             <div className="tech-detail-card">
                                 <Monitor className="tech-icon" />
                                 <div className="tech-info">
-                                    <h3>Frontend</h3>
-                                    <p>React, Tailwind CSS, Shadcn UI, Lucide Icons</p>
+                                    <h3>Frontend & Design</h3>
+                                    <p>React, Tailwind CSS, Figma (UI/UX), Shadcn UI</p>
                                 </div>
                             </div>
                             <div className="tech-detail-card">

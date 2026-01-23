@@ -394,10 +394,13 @@
 }
 
 @keyframes matrix-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.5;
     transform: scale(0.8);
@@ -420,9 +423,12 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -598,9 +604,12 @@
 }
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-0.5rem);
   }
@@ -620,12 +629,26 @@
 }
 
 /* Footer */
-.footer-section {
-  padding: 2rem 0;
+.footer {
   background: black;
-  border-top: 1px solid rgb(34 197 94 / 0.1);
   position: relative;
-  z-index: 20;
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  z-index: 100;
+  /* Higher than main content */
+}
+
+.footer-waves {
+  position: absolute;
+  top: -120px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 110;
+  /* Above the footer body and content */
+  pointer-events: none;
 }
 
 .footer-container {
