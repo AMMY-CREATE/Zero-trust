@@ -5,6 +5,7 @@ import { SeverityBadge } from "@/components/dashboard/SeverityBadge";
 import { AnomalyExplanation } from "@/components/dashboard/AnomalyExplanation";
 import { formatDistanceToNow } from "date-fns";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { LiveThreatSimulation } from "@/components/dashboard/LiveThreatSimulation";
 
 export default function AnomalyDetectionPage() {
     const anomalies = generateAnomalies(15);
@@ -18,6 +19,9 @@ export default function AnomalyDetectionPage() {
     return (
         <DashboardLayout userRole="admin" title="Anomaly Detection" subtitle="ML-powered threat identification">
             <div className="grid lg:grid-cols-3 gap-6">
+                <div className="lg:col-span-3">
+                    <LiveThreatSimulation />
+                </div>
 
                 <div className="lg:col-span-2 space-y-6">
                     <div className="bg-card rounded-xl border border-border p-6">
