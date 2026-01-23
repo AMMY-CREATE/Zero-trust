@@ -21,7 +21,9 @@ import {
     HardDrive,
     Timer,
     Zap,
-    Globe
+    Globe,
+    Sparkles,
+    Brain
 } from 'lucide-react';
 import { PublicLayout } from "@/components/layout/PublicLayout";
 import { DigitalRain } from "@/components/effects/DigitalRain";
@@ -175,6 +177,46 @@ const InformationPage = () => {
                                 <p className="card-content">
                                     Deep packet inspection for protocol anomalies. Using unencrypted ports or
                                     unusual protocol variations results in immediate isolation.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section className="info-section">
+                        <h2 className="section-title">
+                            <Sparkles className="w-8 h-8" />
+                            AI Development Synergy
+                        </h2>
+                        <div className="info-grid">
+                            <div className="info-card">
+                                <Monitor className="card-icon" />
+                                <h3 className="card-title">Lovable</h3>
+                                <p className="card-content">
+                                    Foundational architect used for the initial system structure and
+                                    premium UI components, enabling rapid visual prototyping.
+                                </p>
+                            </div>
+                            <div className="info-card">
+                                <Zap className="card-icon" />
+                                <h3 className="card-title">Antigravity</h3>
+                                <p className="card-content">
+                                    Primary co-pilot for advanced logic, security engineering,
+                                    and real-time system refinement across the ZTADS core.
+                                </p>
+                            </div>
+                            <div className="info-card">
+                                <Brain className="card-icon" />
+                                <h3 className="card-title">GitHub Copilot</h3>
+                                <p className="card-content">
+                                    Enhanced development velocity with intelligent code autocompletion
+                                    and boilerplate reduction during high-intensity cycles.
+                                </p>
+                            </div>
+                            <div className="info-card">
+                                <Database className="card-icon" />
+                                <h3 className="card-title">And Others</h3>
+                                <p className="card-content">
+                                    Comprehensive support from varied AI tools for brainstorming,
+                                    documentation, and threat simulation dataset generation.
                                 </p>
                             </div>
                         </div>

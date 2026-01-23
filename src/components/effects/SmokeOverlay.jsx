@@ -6,7 +6,7 @@ import { Shield, Target, Zap, Lock, AlertTriangle, Terminal, ChevronRight } from
  * Implements progressive glass cracking and shattering effect.
  */
 const INTRO_TEXT = [
-    "INITIALIZING AMMY_PROJECT_v2...",
+    "INITIALIZING ZERO_TRUST_SYSTEM_v2...",
     "USER_IDENTIFIED: VISITOR",
     "CORE_OBJECTIVE: LOCATE_AND_NEUTRALIZE_SECURITY_FRAGMENTS",
     "THREAT_LEVEL: ELEVATED",
@@ -88,16 +88,16 @@ export const SmokeOverlay = ({ onClear }) => {
         >
             {/* Glass Cracks SVG - Progressive reveal */}
             <div className={`glass-crack ${progress >= 25 ? 'visible' : ''}`}>
-                <svg viewBox="0 0 100 100">
+                <svg viewBox="0 0 100 100" style={{ filter: 'drop-shadow(0 0 8px rgba(var(--primary-rgb), 0.4))' }}>
                     {/* 25% Cracks */}
-                    <path d="M50 50 L40 30 M50 50 L60 35 M50 50 L45 70 M50 50 L65 60" />
+                    <path d="M50 50 L40 30 M50 50 L60 35 M50 50 L45 70 M50 50 L65 60" stroke="rgba(var(--primary-rgb), 0.6)" strokeWidth="0.5" />
                     {/* 50% More Cracks */}
                     {progress >= 50 && (
-                        <path d="M40 30 L20 25 M60 35 L80 40 M45 70 L30 85 M65 60 L85 75 M40 30 L35 15 M60 35 L65 20" />
+                        <path d="M40 30 L20 25 M60 35 L80 40 M45 70 L30 85 M65 60 L85 75 M40 30 L35 15 M60 35 L65 20" stroke="rgba(var(--primary-rgb), 0.5)" strokeWidth="0.3" />
                     )}
                     {/* 75% Full Screen Cracks */}
                     {progress >= 75 && (
-                        <path d="M20 25 L5 10 M80 40 L95 45 M30 85 L15 95 M85 75 L95 85 M35 15 L25 5 M65 20 L75 5 M15 95 L5 80" />
+                        <path d="M20 25 L5 10 M80 40 L95 45 M30 85 L15 95 M85 75 L95 85 M35 15 L25 5 M65 20 L75 5 M15 95 L5 80" stroke="rgba(var(--primary-rgb), 0.4)" strokeWidth="0.2" />
                     )}
                 </svg>
             </div>

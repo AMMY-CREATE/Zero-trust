@@ -131,9 +131,15 @@ export function Navbar() {
             </div>
 
 
-            <svg className="navbar-wave" viewBox="0 0 1440 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0h1440v20c-150 15-350-15-720 0s-570 15-720 0V0z" />
-                <path className="wave-accent" d="M0 15c150 15 350-15 720 0s570 15 720 0" strokeDasharray="5,10" />
+            <svg className="navbar-wave" viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Main solid wave path */}
+                <path className="wave-fill" d="M0 0h1440v24c-180 12-360-12-720 0s-540 12-720 0V0z" />
+                {/* Primary glow line */}
+                <path className="wave-line-primary" d="M0 24c180 12 360-12 720 0s540 12 720 0" strokeWidth="1" />
+                {/* Secondary subtle line */}
+                <path className="wave-line-secondary" d="M0 32c240 8 480-16 720 0s480 8 720 0" strokeWidth="0.5" opacity="0.5" />
+                {/* Dashed accent line */}
+                <path className="wave-accent" d="M0 20c150 15 350-15 720 0s570 15 720 0" strokeWidth="0.5" strokeDasharray="4,8" />
             </svg>
         </nav>
     );
