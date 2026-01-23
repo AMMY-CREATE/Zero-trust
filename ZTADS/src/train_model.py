@@ -6,8 +6,9 @@ import os
 import preprocess
 
 # Configuration
-DATA_PATH = r"..\data\behavior_logs.csv"
-MODEL_PATH = r"..\model\unified_iforest.pkl"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_PATH = os.path.join(BASE_DIR, "data", "behavior_logs.csv")
+MODEL_PATH = os.path.join(BASE_DIR, "model", "unified_iforest.pkl")
 
 def train_model():
     """Trains the Isolation Forest model on normal behavior data."""

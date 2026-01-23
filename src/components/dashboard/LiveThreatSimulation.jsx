@@ -55,8 +55,38 @@ export const LiveThreatSimulation = () => {
             const data = await response.json();
             setResult(data);
         } catch (error) {
-            console.error("Scan failed:", error);
-            setResult({ error: "Failed to connect to ZTADS Engine. Ensure API is running." });
+            console.error("Scan failed, falling back to simulation:", error);
+
+            // Simulation Fallback Logic
+            setTimeout(() => {
+                let simulatedResult;
+                if (scenario === 'normal') {
+                    simulatedResult = {
+                        status: "NORMAL",
+                        risk_score: 5 + Math.random() * 15,
+                        anomaly_label: 1
+                    };
+                } else if (scenario === 'bruteforce') {
+                    simulatedResult = {
+                        status: "CRITICAL_THREAT",
+                        risk_score: 85 + Math.random() * 10,
+                        anomaly_label: -1
+                    };
+                } else {
+                    simulatedResult = {
+                        status: "ANOMALY_DETECTED",
+                        risk_score: 65 + Math.random() * 15,
+                        anomaly_label: -1
+                    };
+                }
+
+                setResult({
+                    ...simulatedResult,
+                    isSimulation: true
+                });
+                setLoading(false);
+            }, 1000);
+            return;
         }
         setLoading(false);
     };
@@ -123,7 +153,16 @@ export const LiveThreatSimulation = () => {
                     ) : (
                         <div className="w-full text-center animate-in fade-in zoom-in duration-300">
                             {result.error ? (
-                                <div className="text-red-500 font-mono text-sm">{result.error}</div>
+                                <div className="space-y-2 text-center">
+                                    <div className="text-red-500 font-mono text-sm">{result.error}</div>
+                                    <div className="text-xs text-muted-foreground bg-muted/50 p-2 rounded border border-border/50">
+                                        <p className="font-semibold text-primary/80">How to Fix:</p>
+                                        <p>{result.instructions}</p>
+                                    </div>
+                                    <Button onClick={() => setResult(null)} variant="outline" size="sm" className="mt-2">
+                                        Try Again
+                                    </Button>
+                                </div>
                             ) : (
                                 <>
                                     <div className="mb-4">
@@ -137,6 +176,12 @@ export const LiveThreatSimulation = () => {
                                         {result.risk_score > 80 ? <AlertTriangle className="w-4 h-4" /> : <CheckCircle className="w-4 h-4" />}
                                         {result.status.replace('_', ' ')}
                                     </div>
+
+                                    {result.isSimulation && (
+                                        <div className="mt-2 text-[10px] text-muted-foreground italic">
+                                            Simulation Mode: Connection to ZTADS Engine failed.
+                                        </div>
+                                    )}
 
                                     <Button onClick={() => setResult(null)} variant="ghost" className="mt-4 text-xs">
                                         Reset Scanner
